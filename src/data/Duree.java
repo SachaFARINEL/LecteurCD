@@ -33,7 +33,7 @@ public class Duree {
      * @param secondes nbre de secondes.
      */
     public Duree(int heures, int minutes, int secondes) {
-        if ((heures >= 0) && (minutes >= 0) && (secondes >= 0)) {
+        if (heures >= 0 && minutes >= 0 && minutes <= 60 && secondes >= 0 && secondes <= 60) {
             long conversion = heures * 3600000L + minutes * 60000L + secondes * 1000L;
             if (conversion > 0) {
                 this.leTemps = conversion;

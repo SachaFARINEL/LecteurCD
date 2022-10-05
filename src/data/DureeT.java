@@ -86,7 +86,7 @@ public class DureeT {
         System.out.println("--------------------------------------");
         System.out.println("");
 
-        System.out.println("Cas d'erreur : Temps < 0");
+        System.out.println("Cas d'erreur 1 : Temps < 0");
         System.out.println("Initialisation d'une Durée à 10heures, 5minutes et -2secondes");
         System.out.println("Ce test doit retourner 'Temps incorrect' -->");
         Duree duree2 = new Duree(10, 5, -2);
@@ -95,10 +95,19 @@ public class DureeT {
         System.out.println("--------------------------------------");
         System.out.println("");
 
+        System.out.println("Cas d'erreur 2 : Minutes ou secondes > 60");
+        System.out.println("Initialisation d'une Durée à 10heures, 62minutes et 2secondes");
+        System.out.println("Ce test doit retourner 'Temps incorrect' -->");
+        Duree duree3 = new Duree(10, 62, 2);
+
+        System.out.println("");
+        System.out.println("--------------------------------------");
+        System.out.println("");
+
         System.out.println("Cas limite :  Temps = 0");
         System.out.println("Initialisation d'une Durée à 0heures, 0minutes et 0secondes");
         System.out.println("Ce test doit retourner 'Temps incorrect' -->");
-        Duree duree3 = new Duree(0, 0, 0);
+        Duree duree4 = new Duree(0, 0, 0);
     }
 
     private static void testConstruct3() {

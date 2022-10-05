@@ -10,7 +10,6 @@ public class DureeT {
         testCompareA();
         testEnTexte();
         testGetLeTemps();
-        System.out.println("test");
     }
 
     private static void testConstruct1() {

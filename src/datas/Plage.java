@@ -98,6 +98,12 @@ public class Plage {
      */
     @Override
     public String toString() {
-        return this.leTitre + " - " + this.lInterprete + " - " + this.laDuree.enTexte('S');
+        String ret = "";
+        if (this.laDuree == null && this.leTitre != null && this.lInterprete != null) {
+            ret = this.leTitre + " - " + this.lInterprete + " - " + this.laDuree.enTexte('S');
+        } else {
+            System.out.println("Plage incorrecte");
+        }
+        return ret;
     }
 }

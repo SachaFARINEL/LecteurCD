@@ -32,9 +32,9 @@ public class CD {
      * @param lInterpreteCD le(les) interprètes du CD
      */
     public CD(String leTitreCD, String lInterpreteCD) {
-        //todo
         this.leTitreCD = leTitreCD;
         this.lInterpreteCD = lInterpreteCD;
+        graverCD();
     }
 
     /**
@@ -49,7 +49,7 @@ public class CD {
      * @param leFich le nom du fichier à lire
      */
     public CD(String leFich) {
-        //todo
+        graverCD(leFich);
     }
 
     /**
@@ -100,8 +100,7 @@ public class CD {
      * @return la plage qui se trouve à l'emplacement (index-1) dans le tableau des plages
      */
     public Plage getUnePlage(int index) {
-        //todo
-        return null;
+        return this.lesPlages.get(index - 1);
     }
 
     /**

@@ -51,7 +51,7 @@ public class Duree {
      * @param autreDuree la durée à recopier.
      */
     public Duree(Duree autreDuree) {
-        if (autreDuree.getLeTemps() != 0) {
+        if (autreDuree.getLeTemps() > 0) {
             this.leTemps = autreDuree.getLeTemps();
         } else {
             System.out.println("Temps incorrect");

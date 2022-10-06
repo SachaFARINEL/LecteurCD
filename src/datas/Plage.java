@@ -78,8 +78,7 @@ public class Plage {
      */
     public String getFicheComplete() {
         String ret = "";
-        System.out.println("Test : " + this.laDuree.getLeTemps());
-        if (this.laDuree.getLeTemps() > 0 && !this.leTitre.isEmpty() && !this.lInterprete.isEmpty()) {
+        if (this.laDuree == null && this.leTitre != null && this.lInterprete != null) {
             String Newligne = System.getProperty("line.separator");
             ret = "Description de la plage de musique : " + Newligne;
             ret += "\tTitre : " + this.leTitre + Newligne;

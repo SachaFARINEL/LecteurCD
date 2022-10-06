@@ -4,7 +4,8 @@ public class PlageT {
 
     public static void main(String[] args) {
         //testConstructeur();
-        testGetFicheComplete();
+        //testGetFicheComplete();
+        testToString();
     }
 
     private static void testConstructeur() {
@@ -80,7 +81,7 @@ public class PlageT {
     private static void testGetFicheComplete() {
         System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
-        System.out.println("Test du testGetFicheComplete()");
+        System.out.println("Test de la méthode getFicheComplete()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("");
 
@@ -142,6 +143,37 @@ public class PlageT {
         System.out.println("Ce test doit retourner 'Plage incorrecte' -->");
 
         plage3.getFicheComplete();
+
+    }
+
+    private static void testToString() {
+        System.out.println("");
+        System.out.println("><><><><><><><><><><><><><><><><><><");
+        System.out.println("Test de la méthode toString()");
+        System.out.println("><><><><><><><><><><><><><><><><><><");
+        System.out.println("");
+
+        System.out.println("Cas normal : Duree > 0 et String non nulles");
+        System.out.println("Initialisation d'une Duree à 20000millisecondes");
+
+        Duree duree1 = new Duree(20000);
+
+        System.out.println("Initialisation d'une Plage avec la Duree précédente");
+
+        Plage plage1 = new Plage(duree1, "Titre", "Auteur");
+
+        System.out.println("Appel de la méthode toString sur l'objet Plage");
+
+        String str = "Titre - Auteur - 20.0 sec";
+        if (plage1.toString().equals(str)) {
+            System.out.println("--> Test OK");
+        } else {
+            System.out.println("--> Echec du test !");
+        }
+
+        System.out.println("");
+        System.out.println("--------------------------------------");
+        System.out.println("");
 
 
     }

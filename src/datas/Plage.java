@@ -1,4 +1,4 @@
-package data;
+package datas;
 
 /**
  * Cette classe définit une plage de musique appartenant à un CD. Une plage a une durée et peut se jouer.
@@ -77,12 +77,17 @@ public class Plage {
      * @return le texte qui décrit la plage
      */
     public String getFicheComplete() {
-        String Newligne = System.getProperty("line.separator");
-        String ret = "Description de la plage de musique : " + Newligne;
-        ret += "\tTitre : " + this.leTitre + Newligne;
-        ret += "\tInterprète : " + this.lInterprete + Newligne;
-        ret += "\tDurée : " + this.laDuree.enTexte('H');
-
+        String ret = "";
+        System.out.println("Test : " + this.laDuree.getLeTemps());
+        if (this.laDuree.getLeTemps() > 0 && !this.leTitre.isEmpty() && !this.lInterprete.isEmpty()) {
+            String Newligne = System.getProperty("line.separator");
+            ret = "Description de la plage de musique : " + Newligne;
+            ret += "\tTitre : " + this.leTitre + Newligne;
+            ret += "\tInterprète : " + this.lInterprete + Newligne;
+            ret += "\tDurée : " + this.laDuree.enTexte('H');
+        } else {
+            System.out.println("Plage incorrecte");
+        }
         return ret;
     }
 

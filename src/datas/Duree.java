@@ -1,6 +1,4 @@
-package data;
-
-import java.util.Arrays;
+package datas;
 
 /**
  * Cette classe définit une durée temporelle. Elle permet la manipulation d'intervalles de temps. Une durée s'exprime en millisecondes.

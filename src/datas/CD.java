@@ -1,5 +1,7 @@
 package datas;
 
+import java.util.ArrayList;
+
 /**
  * Un CD est un ensemble de plages musicales. Le CD est caractérisé par un titre, un interprète (ou des interprètes s'il s'agit d'un groupe).
  * Lors de sa création, le CD est vierge. En le gravant, il sera rempli progressivement de morceaux (plages).
@@ -18,7 +20,7 @@ public class CD {
     /**
      * Le tableau contenant toutes les plages du CD
      */
-    private java.util.ArrayList<Plage> lesPlages;
+    private java.util.ArrayList<Plage> lesPlages = new ArrayList<>();
 
     /**
      * Construction d'un CD.
@@ -108,7 +110,18 @@ public class CD {
      * ajoutées "à la main" au CD
      */
     private void graverCD() {
-        //todo
+        Plage plage1 = new Plage(new Duree(0, 2, 30), "Money Tree", "Kendrick Lamar");
+        Plage plage2 = new Plage(new Duree(0, 3, 45), "Flou", "Angèle");
+        Plage plage3 = new Plage(new Duree(0, 1, 34), "Paradis", "Orelsan");
+        Plage plage4 = new Plage(new Duree(0, 4, 12), "Toxic", "Britney Spears");
+        Plage plage5 = new Plage(new Duree(0, 5, 54), "Break my soul", "Beyoncé");
+
+        this.lesPlages.add(plage1);
+        this.lesPlages.add(plage2);
+        this.lesPlages.add(plage3);
+        this.lesPlages.add(plage4);
+        this.lesPlages.add(plage5);
+
     }
 
     /**

@@ -34,9 +34,13 @@ public class CD {
      * @param lInterpreteCD le(les) interprètes du CD
      */
     public CD(String leTitreCD, String lInterpreteCD) {
-        this.leTitreCD = leTitreCD;
-        this.lInterpreteCD = lInterpreteCD;
-        graverCD();
+        if (!leTitreCD.isEmpty() && !lInterpreteCD.isEmpty()) {
+            this.leTitreCD = leTitreCD;
+            this.lInterpreteCD = lInterpreteCD;
+            graverCD();
+        } else {
+            System.out.println("CD incorrect");
+        }
     }
 
     /**
@@ -60,7 +64,13 @@ public class CD {
      * @return le nombre total de plages
      */
     public int getNbrePlages() {
-        return lesPlages.size();
+        int nbPlages = 0;
+        if (!lesPlages.isEmpty()) {
+            nbPlages = lesPlages.size();
+        } else {
+            System.out.println("CD incorrect");
+        }
+        return nbPlages;
     }
 
     /**
@@ -88,8 +98,12 @@ public class CD {
      */
     public Duree getDureeTotale() {
         Duree dureeTotale = new Duree(0);
-        for (Plage plage : lesPlages) {
-            dureeTotale.ajoute(plage.getLaDuree());
+        if (!this.lesPlages.isEmpty()) {
+            for (Plage plage : lesPlages) {
+                dureeTotale.ajoute(plage.getLaDuree());
+            }
+        } else {
+            System.out.println("CD incorrect");
         }
         return dureeTotale;
     }

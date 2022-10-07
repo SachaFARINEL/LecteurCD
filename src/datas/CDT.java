@@ -3,11 +3,11 @@ package datas;
 public class CDT {
 
     public static void main(String[] args) {
-        testConstructeur1();
+        //testConstructeur1();
         testConstructeur2();
-        testGetNbrePlages();
-        testGetDureeTotale();
-        testGetUnePlage();
+        //testGetNbrePlages();
+        //testGetDureeTotale();
+        //testGetUnePlage();
     }
 
     private static void testConstructeur1() {
@@ -51,7 +51,8 @@ public class CDT {
     }
 
     private static void testConstructeur2() {
-        //todo
+        CD cd = new CD("ws/LeFich.txt");
+        System.out.println(cd.getNbrePlages());
     }
 
     private static void testGetNbrePlages() {

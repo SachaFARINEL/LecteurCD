@@ -1,5 +1,9 @@
 package datas;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -145,7 +149,41 @@ public class CD {
      * @param leFich le nom du fichier du texte à lire
      */
     private void graverCD(String leFich) {
-        //todo
+        String tampon;
+        String[] auteurTitreCD;
+        String[] plageCD;
+        String ligne;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(leFich));
+            tampon = br.readLine();
+            if (tampon != null) {
+                auteurTitreCD = tampon.split("-");
+                if (auteurTitreCD.length == 2) {
+                    this.lInterpreteCD = auteurTitreCD[0];
+                    this.leTitreCD = auteurTitreCD[1];
+                } else if (auteurTitreCD.length == 1) {
+                    System.out.println("Le fichier fournit est incorrect, Auteur ou titre manquant");
+                } else {
+                    System.out.println("Le fichier fournit est incorrect, seulement un Auteur et un titre requis");
+                }
+            } else {
+                System.out.println("Le fichier fournit est incorrect, Auteur et titre manquant");
+            }
+
+            while ((ligne = br.readLine()) != null && !ligne.isEmpty()) {
+                plageCD = ligne.split("-");
+                int min = Integer.parseInt(plageCD[2]);
+                int sec = Integer.parseInt(plageCD[3]);
+                Duree dureePlage = new Duree(0, min, sec);
+                Plage plage = new Plage(dureePlage, plageCD[0], plageCD[1]);
+                this.lesPlages.add(plage);
+            }
+
+            br.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

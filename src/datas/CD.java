@@ -172,15 +172,29 @@ public class CD {
 
             while ((ligne = br.readLine()) != null && !ligne.isEmpty()) {
                 plageCD = ligne.split("-");
-                int min = Integer.parseInt(plageCD[2]);
-                int sec = Integer.parseInt(plageCD[3]);
-                Duree dureePlage = new Duree(0, min, sec);
-                Plage plage = new Plage(dureePlage, plageCD[0], plageCD[1]);
-                this.lesPlages.add(plage);
+                int heure = 0;
+                int min = 0;
+                int sec = 0;
+                if (plageCD.length == 5) {
+                    heure = Integer.parseInt(plageCD[2]);
+                    min = Integer.parseInt(plageCD[3]);
+                    sec = Integer.parseInt(plageCD[4]);
+                } else if (plageCD.length == 4) {
+                    min = Integer.parseInt(plageCD[2]);
+                    sec = Integer.parseInt(plageCD[3]);
+                } else if (plageCD.length == 3) {
+                    sec = Integer.parseInt(plageCD[2]);
+                }
+
+                if (heure != 0 || min != 0 || sec != 0) {
+                    Duree dureePlage = new Duree(heure, min, sec);
+                    Plage plage = new Plage(dureePlage, plageCD[1], plageCD[0]);
+                    this.lesPlages.add(plage);
+                } else {
+                    System.out.println("Le format de la ligne est incorrect");
+                }
             }
-
             br.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }

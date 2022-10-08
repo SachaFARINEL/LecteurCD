@@ -51,8 +51,33 @@ public class CDT {
     }
 
     private static void testConstructeur2() {
-        CD cd = new CD("ws/LeFich.txt");
-        System.out.println(cd.getNbrePlages());
+        System.out.println("");
+        System.out.println("><><><><><><><><><><><><><><><><><><");
+        System.out.println("Test du constructeur2()");
+        System.out.println("><><><><><><><><><><><><><><><><><><");
+        System.out.println("");
+
+        System.out.println("Cas normal : Le fichier.txt contient une première ligne TitreCD + AuteurCD et une ou plusieurs ligne TitrePlage Auteur 0 Min Sec ");
+        System.out.println("Initialisation de l'objet : new Cd(ws/LeFich.txt)");
+
+        CD cd1 = new CD("ws/LeFich.txt");
+
+        System.out.println("Verification du titreCD");
+
+        if (cd1.getLeTitreCD().equals("La fête est finie")) {
+            System.out.println("--> Test OK");
+        } else {
+            System.out.println("--> Echec du test !");
+        }
+
+        System.out.println("Verification de l'interpreteCD");
+
+        if (cd1.getlInterpreteCD().equals("Orelsan")) {
+            System.out.println("--> Test OK");
+        } else {
+            System.out.println("--> Echec du test !");
+        }
+
     }
 
     private static void testGetNbrePlages() {

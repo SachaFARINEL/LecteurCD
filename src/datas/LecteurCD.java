@@ -237,6 +237,4 @@ public class LecteurCD {
             System.out.println("Le lecteur n'est pas chargé");
         }
     }
-
-
 }

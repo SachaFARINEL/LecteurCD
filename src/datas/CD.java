@@ -162,10 +162,10 @@ public class CD {
             BufferedReader br = new BufferedReader(new FileReader(leFich));
             tampon = br.readLine();
             if (tampon != null) {
-                auteurTitreCD = tampon.split("-");
+                auteurTitreCD = tampon.split("/");
                 if (auteurTitreCD.length == 2) {
-                    this.lInterpreteCD = auteurTitreCD[0];
-                    this.leTitreCD = auteurTitreCD[1];
+                    this.lInterpreteCD = auteurTitreCD[0].trim();
+                    this.leTitreCD = auteurTitreCD[1].trim();
                 } else if (auteurTitreCD.length == 1) {
                     System.out.println("Le fichier fournit est incorrect, Auteur ou titre manquant");
                 } else {
@@ -176,24 +176,24 @@ public class CD {
             }
 
             while ((ligne = br.readLine()) != null && !ligne.isEmpty()) {
-                plageCD = ligne.split("-");
+                plageCD = ligne.split("/");
                 int heure = 0;
                 int min = 0;
                 int sec = 0;
                 if (plageCD.length == 5) {
-                    heure = Integer.parseInt(plageCD[2]);
-                    min = Integer.parseInt(plageCD[3]);
-                    sec = Integer.parseInt(plageCD[4]);
+                    heure = Integer.parseInt(plageCD[2].trim());
+                    min = Integer.parseInt(plageCD[3].trim());
+                    sec = Integer.parseInt(plageCD[4].trim());
                 } else if (plageCD.length == 4) {
-                    min = Integer.parseInt(plageCD[2]);
-                    sec = Integer.parseInt(plageCD[3]);
+                    min = Integer.parseInt(plageCD[2].trim());
+                    sec = Integer.parseInt(plageCD[3].trim());
                 } else if (plageCD.length == 3) {
-                    sec = Integer.parseInt(plageCD[2]);
+                    sec = Integer.parseInt(plageCD[2].trim());
                 }
 
                 if (heure != 0 || min != 0 || sec != 0) {
                     Duree dureePlage = new Duree(heure, min, sec);
-                    Plage plage = new Plage(dureePlage, plageCD[1], plageCD[0]);
+                    Plage plage = new Plage(dureePlage, plageCD[1].trim(), plageCD[0].trim());
                     this.lesPlages.add(plage);
                 } else {
                     System.out.println("Le format de la ligne est incorrect");

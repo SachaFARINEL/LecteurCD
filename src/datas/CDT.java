@@ -253,7 +253,7 @@ public class CDT {
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("");
 
-        System.out.println("Cas normal : Initialisation avec des paramètres non vide");
+        System.out.println("Cas normal 1 : Initialisation avec des paramètres non vide");
         System.out.println("Création d'un CD('Didine mix', 'Sandou')");
 
         CD cd1 = new CD("Didine mix", "Sandou");
@@ -271,7 +271,7 @@ public class CDT {
         System.out.println("--------------------------------------");
         System.out.println("");
 
-        System.out.println("Cas normal : Initialisation avec 'LeFich.txt'");
+        System.out.println("Cas normal 2 : Initialisation avec 'LeFich.txt'");
         System.out.println("Création d'un CD('LeFich.txt')");
 
         CD cd2 = new CD("LeFich.txt");

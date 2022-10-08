@@ -32,18 +32,24 @@ public class LecteurCD {
      * Le chargement d'un CD se fait à l'aide de la méthode "chargerUnCD()"
      */
     public LecteurCD() {
-        //todo
-        //chargerUnCD();
+        this.estCharge = false;
+        this.leCdCourant = null;
+        this.indexPlage = 0;
     }
 
     /**
-     * Accesseur qui renvoie le nombre de plages que contient le CD
+     * Accesseur qui renvoie le temps total du CD chargé sous forme d'une chaîne de caractères.
      *
      * @return le temps total du CD
      */
     public String getTempsTotal() {
-        //todo
-        return null;
+        String tempsTotal = "";
+        if (this.estCharge) {
+            tempsTotal = this.leCdCourant.getDureeTotale().enTexte('H');
+        } else {
+            System.out.println("Le lecteur n'est pas chargé");
+        }
+        return tempsTotal;
     }
 
     /**
@@ -52,8 +58,14 @@ public class LecteurCD {
      * @return le nombre de plages (-1 si aucun CD chargé)
      */
     public int getNombrePlages() {
-        //todo
-        return 0;
+        int nombrePlages;
+        if (this.estCharge) {
+            nombrePlages = this.leCdCourant.getNbrePlages();
+        } else {
+            nombrePlages = -1;
+            System.out.println("Le lecteur n'est pas chargé");
+        }
+        return nombrePlages;
     }
 
     /**
@@ -62,8 +74,13 @@ public class LecteurCD {
      * @return l'index de la plage courante (zéro si aucun CD chargé)
      */
     public int getIndexCourant() {
-        //todo
-        return 0;
+        int indexCourant = 0;
+        if (this.estCharge) {
+            indexCourant = this.indexPlage;
+        } else {
+            System.out.println("Le lecteur n'est pas chargé");
+        }
+        return indexCourant;
     }
 
     /**
@@ -72,8 +89,13 @@ public class LecteurCD {
      * @return la plage courante (null si aucun CD chargé)
      */
     public Plage getPlageCourante() {
-        //todo
-        return null;
+        Plage plageCourante = null;
+        if (this.estCharge) {
+            plageCourante = this.leCdCourant.getUnePlage(this.indexPlage);
+        } else {
+            System.out.println("Le lecteur n'est pas chargé");
+        }
+        return plageCourante;
     }
 
     /**
@@ -82,8 +104,7 @@ public class LecteurCD {
      * @return vrai si il y a un CD dans le lecteur
      */
     public boolean estCharge() {
-        //todo
-        return false;
+        return this.estCharge;
     }
 
     /**
@@ -92,23 +113,38 @@ public class LecteurCD {
      * @return le CD courant ou null si aucun CD dans le lecteur
      */
     public CD getCD() {
-        //todo
-        return null;
+        CD cd = null;
+        if (this.estCharge) {
+            cd = this.leCdCourant;
+        } else {
+            System.out.println("Le lecteur n'est pas chargé");
+        }
+        return cd;
     }
 
     /**
      * Modification qui force le lecture à se décharger du CD qu'il contient. Le booléen estCharge devient faux et leCdCourant devient null
      */
     public void setDecharger() {
-        //todo
+        if (this.estCharge) {
+            this.estCharge = false;
+            this.leCdCourant = null;
+        } else {
+            System.out.println("Le lecteur n'est pas chargé");
+        }
     }
 
     /**
      * Modificateur dont le rôle est de charger un CD dans le lecteur. Pour simplifier, il s'agira toujours du même CD pour cette version de la
      * méthode. La méthode doit construire le CD et mettre le booléen à vrai.
      */
-    public void chargerUnCd() {
-        //todo
+    public void chargerUnCD() {
+        if (!this.estCharge) {
+            this.leCdCourant = new CD("Didine mix", "Sandou");
+            this.estCharge = true;
+        } else {
+            System.out.println("Le lecteur est déjà chargé");
+        }
     }
 
     /**
@@ -117,7 +153,12 @@ public class LecteurCD {
      * @param leFich le nom du fichier texte à lire
      */
     public void chargerUnCD(String leFich) {
-        //todo
+        if (!this.estCharge) {
+            this.leCdCourant = new CD(leFich);
+            this.estCharge = true;
+        } else {
+            System.out.println("Le lecteur est déjà chargé");
+        }
     }
 
     /**
@@ -125,7 +166,11 @@ public class LecteurCD {
      * d'arrêter le timer de lecture de plages en cours). Il ne se passe rien si aucun CD est chargé
      */
     public void stop() {
-        //todo
+        if (this.estCharge) {
+            this.indexPlage = 1;
+        } else {
+            System.out.println("Le lecteur n'est pas chargé");
+        }
     }
 
     /**
@@ -133,7 +178,11 @@ public class LecteurCD {
      * démarrer le timer de lecture de la 1ère plage). Il ne se passe rien si aucun CD chargé
      */
     public void play() {
-        //todo
+        if (this.estCharge) {
+            this.indexPlage = 1;
+        } else {
+            System.out.println("Le lecteur n'est pas chargé");
+        }
     }
 
     /**
@@ -141,7 +190,11 @@ public class LecteurCD {
      * le timer de lecture de la plage suivante). Il ne se passe rien si aucun CD chargé
      */
     public void next() {
-        //todo
+        if (this.estCharge) {
+            this.indexPlage += 1;
+        } else {
+            System.out.println("Le lecteur n'est pas chargé");
+        }
     }
 
     /**
@@ -149,7 +202,11 @@ public class LecteurCD {
      * démarrer le timer de lecture de la plage précédente). Il ne se passe rien si aucun CD chargé
      */
     public void previous() {
-        //todo
+        if (this.estCharge) {
+            this.indexPlage -= 1;
+        } else {
+            System.out.println("Le lecteur n'est pas chargé");
+        }
     }
 
 

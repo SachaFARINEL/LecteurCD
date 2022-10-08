@@ -199,7 +199,9 @@ public class CD {
                     System.out.println("Le format de la ligne est incorrect");
                 }
             }
+
             br.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

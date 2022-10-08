@@ -81,7 +81,7 @@ public class PlageT {
     private static void testGetFicheComplete() {
         System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
-        System.out.println("Test de la méthode getFicheComplete()");
+        System.out.println("Test de la fonction getFicheComplete()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("");
 
@@ -96,7 +96,7 @@ public class PlageT {
         String Newligne = System.getProperty("line.separator");
         String phraseATester = "Description de la plage de musique : " + Newligne + "\tTitre : Titre" + Newligne + "\tInterprète : Auteur" + Newligne + "\tDurée : 1:2:3";
 
-        System.out.println("Test de la méthode getFicheComplete sur la Plage précédente");
+        System.out.println("Test de la fonction getFicheComplete sur la Plage précédente");
 
         if (plage1.getFicheComplete().equals(phraseATester)) {
             System.out.println("--> Test OK");
@@ -119,7 +119,7 @@ public class PlageT {
 
         Plage plage2 = new Plage(duree2, "Titre", "Auteur");
 
-        System.out.println("Appel de la méthode getFicheComplete() sur la Plage");
+        System.out.println("Appel de la fonction getFicheComplete() sur la Plage");
         System.out.println("Ce test doit retourner 'Plage incorrecte' -->");
 
         plage2.getFicheComplete();
@@ -139,7 +139,7 @@ public class PlageT {
 
         Plage plage3 = new Plage(duree3, "", "Auteur");
 
-        System.out.println("Appel de la méthode getFicheComplete() sur la Plage");
+        System.out.println("Appel de la fonction getFicheComplete() sur la Plage");
         System.out.println("Ce test doit retourner 'Plage incorrecte' -->");
 
         plage3.getFicheComplete();
@@ -149,7 +149,7 @@ public class PlageT {
     private static void testToString() {
         System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
-        System.out.println("Test de la méthode toString()");
+        System.out.println("Test de la fonction toString()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("");
 
@@ -162,7 +162,7 @@ public class PlageT {
 
         Plage plage1 = new Plage(duree1, "Titre", "Auteur");
 
-        System.out.println("Appel de la méthode toString sur l'objet Plage");
+        System.out.println("Appel de la fonction toString sur l'objet Plage");
 
         String str = "Titre - Auteur - 20.0 sec";
         if (plage1.toString().equals(str)) {
@@ -186,7 +186,7 @@ public class PlageT {
 
         Plage plage2 = new Plage(duree2, "", "");
 
-        System.out.println("Appel de la méthode toString() sur cette plage");
+        System.out.println("Appel de la fonction toString() sur cette plage");
         System.out.println("Ce test doit retourner 'Plage incorrecte' -->");
 
         System.out.println(plage2.toString());

@@ -91,7 +91,11 @@ public class LecteurCD {
     public Plage getPlageCourante() {
         Plage plageCourante = null;
         if (this.estCharge) {
-            plageCourante = this.leCdCourant.getUnePlage(this.indexPlage);
+            if (this.indexPlage > 0) {
+                plageCourante = this.leCdCourant.getUnePlage(this.indexPlage);
+            } else {
+                System.out.println("Le CD n'est pas lancé");
+            }
         } else {
             System.out.println("Le lecteur n'est pas chargé");
         }
@@ -129,6 +133,7 @@ public class LecteurCD {
         if (this.estCharge) {
             this.estCharge = false;
             this.leCdCourant = null;
+            this.indexPlage = 0;
         } else {
             System.out.println("Le lecteur n'est pas chargé");
         }
@@ -167,7 +172,11 @@ public class LecteurCD {
      */
     public void stop() {
         if (this.estCharge) {
-            this.indexPlage = 1;
+            if (this.indexPlage > 0) {
+                this.indexPlage = 1;
+            } else {
+                System.out.println("Le CD n'a pas été lancé");
+            }
         } else {
             System.out.println("Le lecteur n'est pas chargé");
         }
@@ -179,7 +188,11 @@ public class LecteurCD {
      */
     public void play() {
         if (this.estCharge) {
-            this.indexPlage = 1;
+            if (this.indexPlage == 0) {
+                this.indexPlage = 1;
+            } else {
+                System.out.println("Le CD a déjà été lancé");
+            }
         } else {
             System.out.println("Le lecteur n'est pas chargé");
         }
@@ -191,7 +204,15 @@ public class LecteurCD {
      */
     public void next() {
         if (this.estCharge) {
-            this.indexPlage += 1;
+            if (this.indexPlage > 0) {
+                if (this.indexPlage == this.getNombrePlages()) {
+                    this.indexPlage = 1;
+                } else {
+                    this.indexPlage += 1;
+                }
+            } else {
+                System.out.println("Le CD n'est pas lancé");
+            }
         } else {
             System.out.println("Le lecteur n'est pas chargé");
         }
@@ -203,7 +224,15 @@ public class LecteurCD {
      */
     public void previous() {
         if (this.estCharge) {
-            this.indexPlage -= 1;
+            if (this.indexPlage > 0) {
+                if (this.indexPlage == 1) {
+                    this.indexPlage = this.getNombrePlages();
+                } else {
+                    this.indexPlage -= 1;
+                }
+            } else {
+                System.out.println("Le CD n'est pas lancé");
+            }
         } else {
             System.out.println("Le lecteur n'est pas chargé");
         }

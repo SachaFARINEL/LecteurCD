@@ -386,7 +386,7 @@ public class DureeT {
     private static void testCompareA() {
         System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
-        System.out.println("Test de la méthode compareA()");
+        System.out.println("Test de la fonction compareA()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("");
 
@@ -462,7 +462,7 @@ public class DureeT {
 
         Duree duree8 = new Duree(-2);
 
-        System.out.println("Appel de la méthode compareA()");
+        System.out.println("Appel de la fonction compareA()");
         System.out.println("Ce test doit retourner 'Temps incorrect' -->");
         duree7.compareA(duree8);
 
@@ -471,7 +471,7 @@ public class DureeT {
     private static void testEnTexte() {
         System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
-        System.out.println("Test de la méthode enTexte()");
+        System.out.println("Test de la fonction enTexte()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("");
 
@@ -481,8 +481,8 @@ public class DureeT {
 
         Duree duree1 = new Duree(26, 15, 25);
 
-        System.out.println("Appel de la méthode enTexte('J') (JJJ HH)");
-        System.out.println("Le retour de cette méthode doit être : '1 jours 2 h'");
+        System.out.println("Appel de la fonction enTexte('J') (JJJ HH)");
+        System.out.println("Le retour de cette fonction doit être : '1 jours 2 h'");
 
         if (duree1.enTexte('J').equals("1 jours 2 h")) {
             System.out.println("--> Test OK");
@@ -494,8 +494,8 @@ public class DureeT {
         System.out.println(">-<");
         System.out.println("");
 
-        System.out.println("Appel de la méthode enTexte('H') (HHH:MM:SS)");
-        System.out.println("Le retour de cette méthode doit être : '26:15:25'");
+        System.out.println("Appel de la fonction enTexte('H') (HHH:MM:SS)");
+        System.out.println("Le retour de cette fonction doit être : '26:15:25'");
 
         if (duree1.enTexte('H').equals("26:15:25")) {
             System.out.println("--> Test OK");
@@ -509,8 +509,8 @@ public class DureeT {
 
         System.out.println("Initialisation d'une durée de 94525005 millisecondes");
         Duree duree2 = new Duree(94525005);
-        System.out.println("Appel de la méthode enTexte('S') (SSS.MMM sec)");
-        System.out.println("Le retour de cette méthode doit être : '94525.5 sec'");
+        System.out.println("Appel de la fonction enTexte('S') (SSS.MMM sec)");
+        System.out.println("Le retour de cette fonction doit être : '94525.5 sec'");
         if (duree2.enTexte('S').equals("94525.5 sec")) {
             System.out.println("--> Test OK");
         } else {
@@ -521,8 +521,8 @@ public class DureeT {
         System.out.println(">-<");
         System.out.println("");
 
-        System.out.println("Appel de la méthode enTexte('M') (MMMMMM millisec)");
-        System.out.println("Le retour de cette méthode doit être : '94525005 millisec'");
+        System.out.println("Appel de la fonction enTexte('M') (MMMMMM millisec)");
+        System.out.println("Le retour de cette fonction doit être : '94525005 millisec'");
         if (duree2.enTexte('M').equals("94525005 millisec")) {
             System.out.println("--> Test OK");
         } else {
@@ -539,7 +539,7 @@ public class DureeT {
 
         Duree duree3 = new Duree(-2);
 
-        System.out.println("Appel de la méthode enTexte('M') (MMMMMM millisec)");
+        System.out.println("Appel de la fonction enTexte('M') (MMMMMM millisec)");
         System.out.println("Ce test doit retourner 'Temps incorrect' -->");
 
         duree3.enTexte('M');
@@ -548,8 +548,8 @@ public class DureeT {
         System.out.println("--------------------------------------");
         System.out.println("");
 
-        System.out.println("Cas d'erreur 2 : le paramètre de la méthode enTexte() n'existe pas");
-        System.out.println("Appel de la méthode enTexte('X')");
+        System.out.println("Cas d'erreur 2 : le paramètre de la fonction enTexte() n'existe pas");
+        System.out.println("Appel de la fonction enTexte('X')");
         System.out.println("Ce test doit retourner 'Paramètre incorrect' -->");
 
         duree2.enTexte('X');
@@ -559,7 +559,7 @@ public class DureeT {
     private static void testGetLeTemps() {
         System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
-        System.out.println("Test de la méthode getLeTemps()");
+        System.out.println("Test de la fonction getLeTemps()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("");
 
@@ -568,7 +568,7 @@ public class DureeT {
 
         Duree duree1 = new Duree(2);
 
-        System.out.println("Appel de la méthode getLeTemps() sur cette Duree");
+        System.out.println("Appel de la fonction getLeTemps() sur cette Duree");
 
         if (duree1.getLeTemps() == 2) {
             System.out.println("--> Test OK");
@@ -585,7 +585,7 @@ public class DureeT {
 
         Duree duree2 = new Duree(1, 22, 3);
 
-        System.out.println("Appel de la méthode getLeTemps() sur cette Duree");
+        System.out.println("Appel de la fonction getLeTemps() sur cette Duree");
 
         if (duree2.getLeTemps() == ((60 * 60 * 1000) + (22 * 60 * 1000) + (3 * 1000))) {
             System.out.println("--> Test OK");
@@ -603,7 +603,7 @@ public class DureeT {
 
         Duree duree3 = new Duree(-2);
 
-        System.out.println("Appel de la méthode getLeTemps() sur cette Duree");
+        System.out.println("Appel de la fonction getLeTemps() sur cette Duree");
 
         if (duree3.getLeTemps() == 0) {
             System.out.println("--> Test OK, la durée est incorrecte");
@@ -621,7 +621,7 @@ public class DureeT {
 
         Duree duree4 = new Duree(1, -22, 3);
 
-        System.out.println("Appel de la méthode getLeTemps() sur cette Duree");
+        System.out.println("Appel de la fonction getLeTemps() sur cette Duree");
 
         if (duree4.getLeTemps() == 0) {
             System.out.println("--> Test OK, la durée est incorrecte");

@@ -93,16 +93,16 @@ public class CDT {
     private static void testGetNbrePlages() {
         System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
-        System.out.println("Test de la méthode getNbrePlages()");
+        System.out.println("Test de la fonction getNbrePlages()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("");
 
-        System.out.println("Cas normal 1 : Appel de la méthode sur un CD 'normal' crée avec le constructeur n°1");
+        System.out.println("Cas normal 1 : Appel de la fonction sur un CD 'normal' crée avec le constructeur n°1");
         System.out.println("Création du CD('Didine Mix', 'Sandou'");
 
         CD cd1 = new CD("Didine mix", "Sandou");
 
-        System.out.println("Appel de la méthode getNbreDePlages()");
+        System.out.println("Appel de la fonction getNbreDePlages()");
         System.out.println("Le cd doit comporter 5 plages avec le constructeur n°1");
         if (cd1.getNbrePlages() == 5) {
             System.out.println("--> Test OK");
@@ -114,12 +114,12 @@ public class CDT {
         System.out.println("--------------------------------------");
         System.out.println("");
 
-        System.out.println("Cas normal 2 : Appel de la méthode sur un CD 'normal' crée avec le constructeur n°2");
+        System.out.println("Cas normal 2 : Appel de la fonction sur un CD 'normal' crée avec le constructeur n°2");
         System.out.println("Création du Cd('LeFich.txt')");
 
         CD cd2 = new CD("LeFich.txt");
 
-        System.out.println("Appel de la méthode getNbreDePlages()");
+        System.out.println("Appel de la fonction getNbreDePlages()");
 
         System.out.println("Le fichier doit comporter 6 plages");
         if (cd2.getNbrePlages() == 6) {
@@ -133,13 +133,13 @@ public class CDT {
         System.out.println("--------------------------------------");
         System.out.println("");
 
-        System.out.println("Cas d'erreur 1 : Appel de la méthode sur un CD avec paramètre vide, crée avec le constructeur n°1");
+        System.out.println("Cas d'erreur 1 : Appel de la fonction sur un CD avec paramètre vide, crée avec le constructeur n°1");
         System.out.println("Création du CD('Didine Mix', '')");
         System.out.println("Ce test doit retourner 'CD incorrect' -->");
 
         CD cd3 = new CD("Didine mix", "");
 
-        System.out.println("Appel de la méthode getNbrePlages() sur CD");
+        System.out.println("Appel de la fonction getNbrePlages() sur CD");
         System.out.println("Ce test doit retourner 'CD incorrect' -->");
 
         cd3.getNbrePlages();
@@ -148,13 +148,13 @@ public class CDT {
         System.out.println("--------------------------------------");
         System.out.println("");
 
-        System.out.println("Cas d'erreur 2 : Appel de la méthode sur un CD crée avec un fichier texte mal écrit");
+        System.out.println("Cas d'erreur 2 : Appel de la fonction sur un CD crée avec un fichier texte mal écrit");
         System.out.println("Création du CD('LeFichEmpty.txt')");
         System.out.println("Ce test doit retourner 'Le fichier fournit est incorrect, Auteur et titre manquant' -->");
 
         CD cd4 = new CD("LeFichEmpty.txt");
 
-        System.out.println("Appel de la méthode getNbrePlages() sur CD");
+        System.out.println("Appel de la fonction getNbrePlages() sur CD");
         System.out.println("Ce test doit retourner 'CD incorrect' -->");
 
         cd4.getNbrePlages();
@@ -164,16 +164,16 @@ public class CDT {
     private static void testGetDureeTotale() {
         System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
-        System.out.println("Test de la méthode getDureeTotale()");
+        System.out.println("Test de la fonction getDureeTotale()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("");
 
-        System.out.println("Cas normal 1 : Appel de la méthode sur un CD 'normal' crée avec le constructeur n°1");
+        System.out.println("Cas normal 1 : Appel de la fonction sur un CD 'normal' crée avec le constructeur n°1");
         System.out.println("Création du CD('Didine Mix', 'Sandou'");
 
         CD cd1 = new CD("Didine mix", "Sandou");
 
-        System.out.println("Appel de la méthode getDureeTotale()");
+        System.out.println("Appel de la fonction getDureeTotale()");
         long dureeTotale = new Duree(0, 2, 30).getLeTemps();
         dureeTotale += new Duree(0, 3, 45).getLeTemps();
         dureeTotale += new Duree(0, 1, 34).getLeTemps();
@@ -191,7 +191,7 @@ public class CDT {
         System.out.println("--------------------------------------");
         System.out.println("");
 
-        System.out.println("Cas normal 2 : Appel de la méthode sur un CD 'normal' crée avec le constructeur n°2");
+        System.out.println("Cas normal 2 : Appel de la fonction sur un CD 'normal' crée avec le constructeur n°2");
         System.out.println("Création du Cd('LeFich.txt')");
 
         CD cd2 = new CD("LeFich.txt");
@@ -205,7 +205,7 @@ public class CDT {
         tempsTotal += new Duree(0, 0, 45).getLeTemps();
         tempsTotal += new Duree(1, 10, 15).getLeTemps();
 
-        System.out.println("Appel de la méthode getDureeTotale() : Temps du fichier -> " + tempsTotal);
+        System.out.println("Appel de la fonction getDureeTotale() : Temps du fichier -> " + tempsTotal);
         System.out.println("Ce test doit retourner 'Temps incorrect' -->");
 
         if (cd2.getDureeTotale().getLeTemps() == tempsTotal) {
@@ -218,13 +218,13 @@ public class CDT {
         System.out.println("--------------------------------------");
         System.out.println("");
 
-        System.out.println("Cas d'erreur 1 : Appel de la méthode sur un CD avec paramètre vide, crée avec le constructeur n°1");
+        System.out.println("Cas d'erreur 1 : Appel de la fonction sur un CD avec paramètre vide, crée avec le constructeur n°1");
         System.out.println("Création du CD('Didine Mix', '')");
         System.out.println("Ce test doit retourner 'CD incorrect' -->");
 
         CD cd3 = new CD("Didine mix", "");
 
-        System.out.println("Appel de la méthode getDureeTotale() sur CD");
+        System.out.println("Appel de la fonction getDureeTotale() sur CD");
         System.out.println("Ce test doit retourner 'Temps incorrect & CD incorrect' -->");
 
         cd3.getDureeTotale();
@@ -233,13 +233,13 @@ public class CDT {
         System.out.println("--------------------------------------");
         System.out.println("");
 
-        System.out.println("Cas d'erreur 2 : Appel de la méthode sur un CD crée avec un fichier texte mal écrit");
+        System.out.println("Cas d'erreur 2 : Appel de la fonction sur un CD crée avec un fichier texte mal écrit");
         System.out.println("Création du CD('LeFichEmpty.txt')");
         System.out.println("Ce test doit retourner 'Le fichier fournit est incorrect, Auteur et titre manquant' -->");
 
         CD cd4 = new CD("LeFichEmpty.txt");
 
-        System.out.println("Appel de la méthode getNbrePlages() sur CD");
+        System.out.println("Appel de la fonction getNbrePlages() sur CD");
         System.out.println("Ce test doit retourner 'Temps incorrect & CD incorrect' -->");
 
         cd4.getDureeTotale();
@@ -249,7 +249,7 @@ public class CDT {
     private static void testGetUnePlage() {
         System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
-        System.out.println("Test de la méthode getUnePlage()");
+        System.out.println("Test de la fonction getUnePlage()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("");
 
@@ -258,7 +258,7 @@ public class CDT {
 
         CD cd1 = new CD("Didine mix", "Sandou");
 
-        System.out.println("Appel de la méthode getUnePlage(1)");
+        System.out.println("Appel de la fonction getUnePlage(1)");
         System.out.println("La plage doit être : 'Money Tree - Kendrick Lamar - 150.0 sec'");
 
         if (cd1.getUnePlage(1).toString().equals("Money Tree - Kendrick Lamar - 150.0 sec")) {
@@ -276,7 +276,7 @@ public class CDT {
 
         CD cd2 = new CD("LeFich.txt");
 
-        System.out.println("Appel de la méthode getUnePlage(3)");
+        System.out.println("Appel de la fonction getUnePlage(3)");
         System.out.println("La plage doit être : 'Orelsan - Basique - 164.0 sec'");
 
         if (cd2.getUnePlage(3).toString().equals("Orelsan - Basique - 164.0 sec")) {
@@ -295,7 +295,7 @@ public class CDT {
 
         CD cd3 = new CD("LeFichEmpty.txt");
 
-        System.out.println("Appel de la méthode getUnePlage(1)");
+        System.out.println("Appel de la fonction getUnePlage(1)");
         System.out.println("Ce test doit retourner 'La plage n'existe pas' -->");
 
         cd3.getUnePlage(1);

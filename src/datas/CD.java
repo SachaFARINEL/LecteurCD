@@ -120,7 +120,13 @@ public class CD {
      * @return la plage qui se trouve à l'emplacement (index-1) dans le tableau des plages
      */
     public Plage getUnePlage(int index) {
-        return this.lesPlages.get(index - 1);
+        Plage plage = null;
+        if (index <= lesPlages.size()) {
+            plage = this.lesPlages.get(index - 1);
+        } else {
+            System.out.println("La plage n'existe pas");
+        }
+        return plage;
     }
 
     /**
@@ -139,7 +145,6 @@ public class CD {
         this.lesPlages.add(plage3);
         this.lesPlages.add(plage4);
         this.lesPlages.add(plage5);
-
     }
 
     /**

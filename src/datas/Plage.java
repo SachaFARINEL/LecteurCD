@@ -78,7 +78,7 @@ public class Plage {
      */
     public String getFicheComplete() {
         String ret = "";
-        if (this.laDuree == null && this.leTitre != null && this.lInterprete != null) {
+        if (this.laDuree != null && this.leTitre != null && this.lInterprete != null) {
             String Newligne = System.getProperty("line.separator");
             ret = "Description de la plage de musique : " + Newligne;
             ret += "\tTitre : " + this.leTitre + Newligne;
@@ -99,7 +99,7 @@ public class Plage {
     @Override
     public String toString() {
         String ret = "";
-        if (this.laDuree == null && this.leTitre != null && this.lInterprete != null) {
+        if (this.laDuree != null && this.leTitre != null && this.lInterprete != null) {
             ret = this.leTitre + " - " + this.lInterprete + " - " + this.laDuree.enTexte('S');
         } else {
             System.out.println("Plage incorrecte");

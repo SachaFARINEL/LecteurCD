@@ -635,23 +635,6 @@ public class LecteurCDT {
             System.out.println("--> Echec du test !");
         }
 
-        System.out.println("");
-        System.out.println("--------------------------------------");
-        System.out.println("");
-
-        System.out.println("Cas limite : Le CD à déjà été lancé");
-        System.out.println("Chargement d'un CD");
-
-        lecteurCD.chargerUnCD();
-
-        System.out.println("Lancement du Lecteur");
-
-        lecteurCD.play();
-
-        System.out.println("Relancement du CD");
-        System.out.println("Le test doit renvoyer : --> Le CD a déjà été lancé");
-
-        lecteurCD.play();
     }
 
     private static void testNext() {

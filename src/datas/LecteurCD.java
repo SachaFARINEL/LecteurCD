@@ -190,8 +190,6 @@ public class LecteurCD {
         if (this.estCharge) {
             if (this.indexPlage == 0) {
                 this.indexPlage = 1;
-            } else {
-                System.out.println("Le CD a déjà été lancé");
             }
         } else {
             System.out.println("Le lecteur n'est pas chargé");

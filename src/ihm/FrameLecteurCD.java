@@ -1,5 +1,6 @@
 package ihm;
 
+import control.MyMouseListener;
 import datas.LecteurCD;
 
 import javax.imageio.ImageIO;
@@ -26,8 +27,12 @@ public class FrameLecteurCD extends JFrame {
 
     private JLabel labTempsTotal = new JLabel("Temps total");
     private JLabel labNbPlages = new JLabel("Nombre de plages");
+    private JLabel labPochetteCD;
+
+    private ImageIcon imgPochetteCD;
 
     private LecteurCD lecteurCD;
+
 
     public FrameLecteurCD(String titre) throws IOException {
         super(titre);
@@ -43,14 +48,24 @@ public class FrameLecteurCD extends JFrame {
         this.setLayout(new GridLayout(2, 1));
         this.add(pochetteView());
         this.add(controlsView());
+        addListeners();
+    }
+
+    private void addListeners() {
+        this.btnChargerCD.addActionListener(new MyMouseListener(this));
+        this.btnPlay.addActionListener(new MyMouseListener(this));
+        this.btnStop.addActionListener(new MyMouseListener(this));
+        this.btnNext.addActionListener(new MyMouseListener(this));
+        this.btnPrevious.addActionListener(new MyMouseListener(this));
     }
 
     private JPanel controlsView() {
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(3, 1));
+        panel.setLayout(new GridLayout(4, 1));
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        panel.add(plageInformation());
+        panel.add(chargementCD());
         panel.add(CDInformation());
+        panel.add(plageInformation());
         panel.add(menulecteur());
         return panel;
     }
@@ -58,31 +73,45 @@ public class FrameLecteurCD extends JFrame {
     private JPanel pochetteView() {
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(1, 1));
-
+        this.imgPochetteCD = new ImageIcon("ws/ressources/loading.jpg");
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+        ImageIcon imgPochetteCDResize = new ImageIcon(this.imgPochetteCD.getImage().getScaledInstance(600, 400, Image.SCALE_DEFAULT));
+        this.labPochetteCD = new JLabel(imgPochetteCDResize);
+        panel.add(this.labPochetteCD);
+        //todo  Minuteur
         return panel;
     }
 
-    private JPanel plageInformation() {
+    private JPanel chargementCD() {
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(3, 2));
-        panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
+        panel.setLayout(new GridLayout(1, 1));
         panel.add(this.btnChargerCD);
-        panel.add(new JLabel());
-
-        this.labTempsTotal.setHorizontalAlignment(SwingConstants.CENTER);
-        panel.add(this.labTempsTotal);
-        this.txtTempsTotal.setEditable(false);
-        panel.add(this.txtTempsTotal);
-
-        this.labNbPlages.setHorizontalAlignment(SwingConstants.CENTER);
-        panel.add(this.labNbPlages);
-        this.txtNbPlages.setEditable(false);
-        panel.add(this.txtNbPlages);
 
         return panel;
     }
 
     private JPanel CDInformation() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(2, 2));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
+
+
+        this.labTempsTotal.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.add(this.labTempsTotal);
+        this.txtTempsTotal.setEditable(false);
+        this.txtTempsTotal.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.add(this.txtTempsTotal);
+
+        this.labNbPlages.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.add(this.labNbPlages);
+        this.txtNbPlages.setEditable(false);
+        this.txtNbPlages.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.add(this.txtNbPlages);
+
+        return panel;
+    }
+
+    private JPanel plageInformation() {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
@@ -107,13 +136,17 @@ public class FrameLecteurCD extends JFrame {
     private JPanel menulecteur() {
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(1, 4, 30, 30));
-        panel.setBorder(BorderFactory.createEmptyBorder(5, 20, 20, 20));
+        panel.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 20));
         panel.add(this.btnStop);
         panel.add(this.btnPlay);
         panel.add(this.btnNext);
         panel.add(this.btnPrevious);
 
         return panel;
+    }
+
+    public LecteurCD getLecteurCD() {
+        return this.lecteurCD;
     }
 
     public JButton getBtnChargerCD() {
@@ -162,6 +195,19 @@ public class FrameLecteurCD extends JFrame {
 
     public void setTxtDureePlageCourante(String dureePlageCourante) {
         this.txtDureePlageCourante.setText(dureePlageCourante);
+    }
+
+    public void setImgPochetteCD(String pathPochette) {
+        if (this.getLecteurCD().estCharge()) {
+            System.out.println(pathPochette);
+            ImageIcon pochetteCD = new ImageIcon("ws/ressources/" + pathPochette);
+            ImageIcon imgPochetteCDResize = new ImageIcon(pochetteCD.getImage().getScaledInstance(400, 400, Image.SCALE_DEFAULT));
+            this.labPochetteCD.setIcon(imgPochetteCDResize);
+        } else {
+            this.imgPochetteCD = new ImageIcon("ws/ressources/loading.jpg");
+            ImageIcon icon = new ImageIcon(this.imgPochetteCD.getImage().getScaledInstance(600, 400, Image.SCALE_DEFAULT));
+            this.labPochetteCD.setIcon(icon);
+        }
     }
 
     public static void main(String[] args) throws UnsupportedLookAndFeelException, IOException {

@@ -3,20 +3,20 @@ package datas;
 public class LecteurCDT {
 
     public static void main(String[] args) {
-//        testConstructeur();
-//        testGetTempsTotal();
-//        testGetNombrePlages();
-//        testGetIndexCourant();
-//        testGetPlageCourante();
-//        testEstCharge();
-//        testGetCD();
-//        testSetDecharger();
-//        testChargerUnCD();
-//        testChargerUnCDFICHIER();
-//        testStop();
-//        testPlay();
-//        testNext();
-//        testPrevious();
+        testConstructeur();
+        testGetTempsTotal();
+        testGetNombrePlages();
+        testGetIndexCourant();
+        testGetPlageCourante();
+        testEstCharge();
+        testGetCD();
+        testSetDecharger();
+        testChargerUnCD();
+        testChargerUnCDFICHIER();
+        testStop();
+        testPlay();
+        testNext();
+        testPrevious();
     }
 
     private static void testConstructeur() {
@@ -55,8 +55,9 @@ public class LecteurCDT {
     }
 
     private static void testGetTempsTotal() {
+        System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
-        System.out.println("Test de la méthode chargerUnCD()");
+        System.out.println("Test de la fonction getTempsTotal()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("");
 
@@ -82,7 +83,6 @@ public class LecteurCDT {
         duree.ajoute(duree5);
 
         System.out.println("Le temps total doit être égal à " + duree.enTexte('H'));
-        System.out.println("Le prochain test produit : --> 'Temps incorrect'");
         if (lecteurCD.getTempsTotal().equals(duree.enTexte('H'))) {
             System.out.println("--> Test OK");
         } else {
@@ -112,17 +112,18 @@ public class LecteurCDT {
         System.out.println("Appel de la méthode chargerUnCD(LeFichEmpty) sur le lecteur CD");
         System.out.println("Ce test doit produire : --> 'Le fichier fournit est incorrect, Auteur et titre manquant'");
 
-        lecteurCD.chargerUnCD("LeFichEmpty.txt");
+        lecteurCD.chargerUnCD("testCD/LeFichEmpty.txt");
 
         System.out.println("Appel de la fonction getTempsTotal()");
-        System.out.println("Ce test doit produire : --> 'Temps incorrect & CD incorrect & Temps incorrect'");
+        System.out.println("Ce test doit produire : --> 'CD incorrect & Temps incorrect'");
 
         lecteurCD.getTempsTotal();
     }
 
     private static void testGetNombrePlages() {
+        System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
-        System.out.println("Test de la fonction getNombrePlage()");
+        System.out.println("Test de la fonction getNombrePlages()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("");
 
@@ -154,12 +155,13 @@ public class LecteurCDT {
 
         System.out.println("Appel de la fonction getNombrePlages()");
         System.out.println("Le test doit retourner -1");
+        System.out.println("Ce test doit produire : --> 'Le lecteur n'est pas chargé'");
+
         if (lecteurCD.getNombrePlages() == -1) {
             System.out.println("--> Test OK");
         } else {
             System.out.println("--> Echec du test !");
         }
-        System.out.println("Ce test doit produire : --> 'Le lecteur n'est pas chargé'");
 
 
         System.out.println("");
@@ -170,7 +172,7 @@ public class LecteurCDT {
         System.out.println("Appel de la méthode chargerUnCD(LeFichEmpty) sur le lecteur CD");
         System.out.println("Ce test doit produire : --> 'Le fichier fournit est incorrect, Auteur et titre manquant'");
 
-        lecteurCD.chargerUnCD("LeFichEmpty.txt");
+        lecteurCD.chargerUnCD("testCD/LeFichEmpty.txt");
 
         System.out.println("Appel de la fonction getNombrePlages()");
         System.out.println("Ce test doit produire : --> 'CD incorrect'");
@@ -184,6 +186,7 @@ public class LecteurCDT {
     }
 
     private static void testGetIndexCourant() {
+        System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("Test de la fonction getIndexCourant()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
@@ -283,6 +286,7 @@ public class LecteurCDT {
     }
 
     private static void testGetPlageCourante() {
+        System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("Test de la fonction getPlageCourante()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
@@ -340,6 +344,7 @@ public class LecteurCDT {
     }
 
     private static void testEstCharge() {
+        System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("Test de la méthode estCharge()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
@@ -372,6 +377,7 @@ public class LecteurCDT {
     }
 
     private static void testGetCD() {
+        System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("Test de la fonction getCD()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
@@ -413,6 +419,7 @@ public class LecteurCDT {
     }
 
     private static void testSetDecharger() {
+        System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("Test de la méthode setDecharger()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
@@ -454,6 +461,7 @@ public class LecteurCDT {
     }
 
     private static void testChargerUnCD() {
+        System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("Test de la méthode chargerUnCD()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
@@ -489,6 +497,7 @@ public class LecteurCDT {
     }
 
     private static void testChargerUnCDFICHIER() {
+        System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("Test de la méthode chargerUnCD(LeFich)");
         System.out.println("><><><><><><><><><><><><><><><><><><");
@@ -499,9 +508,9 @@ public class LecteurCDT {
 
         LecteurCD lecteurCD1 = new LecteurCD();
 
-        System.out.println("Appel de la méthode chargerUnCD(LeFich.txt) sur le lecteur");
+        System.out.println("Appel de la méthode chargerUnCD(testCD/LeFich.txt) sur le lecteur");
 
-        lecteurCD1.chargerUnCD("LeFich.txt");
+        lecteurCD1.chargerUnCD("testCD/LeFich.txt");
 
         System.out.println("Test si le lecteur CD est chargé");
 
@@ -520,10 +529,11 @@ public class LecteurCDT {
         System.out.println("Appel de la méthode chargerUnCD(LeFich) sur le lecteurCD déjà chargé précédemment");
         System.out.println("Ce test doit retourner 'Le lecteur est déjà chargé' -->");
 
-        lecteurCD1.chargerUnCD("LeFich.txt");
+        lecteurCD1.chargerUnCD("testCD/LeFich.txt");
     }
 
     private static void testStop() {
+        System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("Test de la méthode stop()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
@@ -587,8 +597,9 @@ public class LecteurCDT {
     }
 
     private static void testPlay() {
+        System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
-        System.out.println("Test de la méthode start()");
+        System.out.println("Test de la méthode play()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("");
 
@@ -638,6 +649,7 @@ public class LecteurCDT {
     }
 
     private static void testNext() {
+        System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("Test de la méthode next()");
         System.out.println("><><><><><><><><><><><><><><><><><><");
@@ -741,6 +753,7 @@ public class LecteurCDT {
     }
 
     private static void testPrevious() {
+        System.out.println("");
         System.out.println("><><><><><><><><><><><><><><><><><><");
         System.out.println("Test de la méthode previous()");
         System.out.println("><><><><><><><><><><><><><><><><><><");

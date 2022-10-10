@@ -2,8 +2,10 @@ package control;
 
 import ihm.FrameLecteurCD;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 public class MyMouseListener implements ActionListener {
 
@@ -17,32 +19,32 @@ public class MyMouseListener implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == frameLecteurCD.getBtnChargerCD()) {
             if (!this.frameLecteurCD.getLecteurCD().estCharge()) {
-                //todo Faire un FileReader
-                this.frameLecteurCD.getLecteurCD().chargerUnCD("ws/LeFich.txt");
+                JFileChooser fileChooser = new JFileChooser(new File("."));
+                if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                    File fichierAudio = fileChooser.getSelectedFile();
+                    String nomFichierAudio = fichierAudio.toString();
+                    this.frameLecteurCD.getLecteurCD().chargerUnCD(nomFichierAudio);
+                }
                 this.frameLecteurCD.setBtnChargerCD();
 
                 this.frameLecteurCD.setTxtNbPlages(String.valueOf(this.frameLecteurCD.getLecteurCD().getNombrePlages()));
                 this.frameLecteurCD.setTxtTempsTotal(this.frameLecteurCD.getLecteurCD().getTempsTotal());
-
-                this.frameLecteurCD.setImgPochetteCD(this.frameLecteurCD.getLecteurCD().getCD().getlInterpreteCD() + ".jpg");
+                String titreCD = this.frameLecteurCD.getLecteurCD().getCD().getLeTitreCD();
+                String interpreteCD = this.frameLecteurCD.getLecteurCD().getCD().getlInterpreteCD();
+                this.frameLecteurCD.setImgPochetteCD(titreCD + "_" + interpreteCD + ".jpg");
             } else {
                 this.frameLecteurCD.getLecteurCD().setDecharger();
                 this.frameLecteurCD.setBtnChargerCD();
-
                 this.frameLecteurCD.setTxtNbPlages(null);
                 this.frameLecteurCD.setTxtTempsTotal(null);
-
                 resetPlageInformations();
-
                 this.frameLecteurCD.setImgPochetteCD(null);
-
             }
         }
 
         if (event.getSource() == frameLecteurCD.getBtnPlay()) {
             if (this.frameLecteurCD.getLecteurCD().estCharge() && this.frameLecteurCD.getLecteurCD().getCD() != null) {
                 this.frameLecteurCD.getLecteurCD().play();
-
                 setPlageInformations();
             }
         }

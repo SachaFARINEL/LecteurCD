@@ -14,10 +14,10 @@ import java.io.IOException;
 public class FrameLecteurCD extends JFrame {
 
     private JButton btnChargerCD = new JButton("Charger le CD - OFF");
-    private JButton btnStop = new JButton(new ImageIcon("ws/ressources/stop.png"));
-    private JButton btnPlay = new JButton(new ImageIcon("ws/ressources/play.png"));
-    private JButton btnNext = new JButton(new ImageIcon("ws/ressources/next.png"));
-    private JButton btnPrevious = new JButton(new ImageIcon("ws/ressources/previous.png"));
+    private JButton btnStop = new JButton(new ImageIcon("ressources/stop.png"));
+    private JButton btnPlay = new JButton(new ImageIcon("ressources/play.png"));
+    private JButton btnNext = new JButton(new ImageIcon("ressources/next.png"));
+    private JButton btnPrevious = new JButton(new ImageIcon("ressources/previous.png"));
 
     private JTextField txtTempsTotal = new JTextField("");
     private JTextField txtNbPlages = new JTextField("");
@@ -45,7 +45,7 @@ public class FrameLecteurCD extends JFrame {
         this.setSize(600, 800);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        this.setIconImage(ImageIO.read(new File("ws/ressources/cd.png")));
+        this.setIconImage(ImageIO.read(new File("ressources/cd.png")));
         this.setLayout(new GridLayout(2, 1));
         this.add(pochetteView());
         this.add(controlsView());
@@ -74,7 +74,7 @@ public class FrameLecteurCD extends JFrame {
     private JPanel pochetteView() {
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(1, 1));
-        this.imgPochetteCD = new ImageIcon("ws/ressources/loading.jpg");
+        this.imgPochetteCD = new ImageIcon("ressources/loading.jpg");
         panel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
         ImageIcon imgPochetteCDResize = new ImageIcon(this.imgPochetteCD.getImage().getScaledInstance(600, 400, Image.SCALE_DEFAULT));
         this.labPochetteCD = new JLabel(imgPochetteCDResize);
@@ -200,11 +200,11 @@ public class FrameLecteurCD extends JFrame {
 
     public void setImgPochetteCD(String pathPochette) {
         if (this.getLecteurCD().estCharge()) {
-            ImageIcon pochetteCD = new ImageIcon("ws/ressources/" + pathPochette);
+            ImageIcon pochetteCD = new ImageIcon("ressources/" + pathPochette);
             ImageIcon imgPochetteCDResize = new ImageIcon(pochetteCD.getImage().getScaledInstance(400, 400, Image.SCALE_DEFAULT));
             this.labPochetteCD.setIcon(imgPochetteCDResize);
         } else {
-            this.imgPochetteCD = new ImageIcon("ws/ressources/loading.jpg");
+            this.imgPochetteCD = new ImageIcon("ressources/loading.jpg");
             ImageIcon icon = new ImageIcon(this.imgPochetteCD.getImage().getScaledInstance(600, 400, Image.SCALE_DEFAULT));
             this.labPochetteCD.setIcon(icon);
         }

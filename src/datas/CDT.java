@@ -3,11 +3,11 @@ package datas;
 public class CDT {
 
     public static void main(String[] args) {
-//        testConstructeur1();
-//        testConstructeur2();
-        //testGetNbrePlages();
+        testConstructeur1();
+        testConstructeur2();
+        testGetNbrePlages();
         testGetDureeTotale();
-        //testGetUnePlage();
+        testGetUnePlage();
     }
 
     private static void testConstructeur1() {
@@ -58,9 +58,9 @@ public class CDT {
         System.out.println("");
 
         System.out.println("Cas normal : Le fichier.txt contient une première ligne TitreCD + AuteurCD et une ou plusieurs ligne TitrePlage Auteur 0 Min Sec ");
-        System.out.println("Initialisation de l'objet : new Cd(LeFich.txt)");
+        System.out.println("Initialisation de l'objet : new Cd(testCD/LeFich.txt)");
 
-        CD cd1 = new CD("LeFich.txt");
+        CD cd1 = new CD("testCD/LeFich.txt");
 
         System.out.println("Verification du titreCD");
 
@@ -83,10 +83,10 @@ public class CDT {
         System.out.println("");
 
         System.out.println("Cas d'erreur : Initialisation avec un fichier mal écrit");
-        System.out.println("Création d'un CD('LeFichEmpty.txt')");
+        System.out.println("Création d'un CD('testCD/LeFichEmpty.txt')");
         System.out.println("Ce test doit retourner 'Le fichier fournit est incorrect, Auteur et titre manquant' -->");
 
-        CD cd2 = new CD("LeFichEmpty.txt");
+        CD cd2 = new CD("testCD/LeFichEmpty.txt");
 
     }
 
@@ -115,9 +115,9 @@ public class CDT {
         System.out.println("");
 
         System.out.println("Cas normal 2 : Appel de la fonction sur un CD 'normal' crée avec le constructeur n°2");
-        System.out.println("Création du Cd('LeFich.txt')");
+        System.out.println("Création du Cd('testCD/LeFich.txt')");
 
-        CD cd2 = new CD("LeFich.txt");
+        CD cd2 = new CD("testCD/LeFich.txt");
 
         System.out.println("Appel de la fonction getNbreDePlages()");
 
@@ -149,10 +149,10 @@ public class CDT {
         System.out.println("");
 
         System.out.println("Cas d'erreur 2 : Appel de la fonction sur un CD crée avec un fichier texte mal écrit");
-        System.out.println("Création du CD('LeFichEmpty.txt')");
+        System.out.println("Création du CD('testCD/LeFichEmpty.txt')");
         System.out.println("Ce test doit retourner 'Le fichier fournit est incorrect, Auteur et titre manquant' -->");
 
-        CD cd4 = new CD("LeFichEmpty.txt");
+        CD cd4 = new CD("testCD/LeFichEmpty.txt");
 
         System.out.println("Appel de la fonction getNbrePlages() sur CD");
         System.out.println("Ce test doit retourner 'CD incorrect' -->");
@@ -191,9 +191,9 @@ public class CDT {
         System.out.println("");
 
         System.out.println("Cas normal 2 : Appel de la fonction sur un CD 'normal' crée avec le constructeur n°2");
-        System.out.println("Création du Cd('LeFich.txt')");
+        System.out.println("Création du Cd('testCD/LeFich.txt')");
 
-        CD cd2 = new CD("LeFich.txt");
+        CD cd2 = new CD("testCD/LeFich.txt");
 
         System.out.println("Pour le test, le fichier à des duree en heure ou en mins ou juste en sec");
 
@@ -232,10 +232,10 @@ public class CDT {
         System.out.println("");
 
         System.out.println("Cas d'erreur 2 : Appel de la fonction sur un CD crée avec un fichier texte mal écrit");
-        System.out.println("Création du CD('LeFichEmpty.txt')");
+        System.out.println("Création du CD('testCD/LeFichEmpty.txt')");
         System.out.println("Ce test doit retourner 'Le fichier fournit est incorrect, Auteur et titre manquant' -->");
 
-        CD cd4 = new CD("LeFichEmpty.txt");
+        CD cd4 = new CD("testCD/LeFichEmpty.txt");
 
         System.out.println("Appel de la fonction getNbrePlages() sur CD");
         System.out.println("Ce test doit retourner 'CD incorrect' -->");
@@ -269,10 +269,10 @@ public class CDT {
         System.out.println("--------------------------------------");
         System.out.println("");
 
-        System.out.println("Cas normal 2 : Initialisation avec 'LeFich.txt'");
-        System.out.println("Création d'un CD('LeFich.txt')");
+        System.out.println("Cas normal 2 : Initialisation avec 'testCD/LeFich.txt'");
+        System.out.println("Création d'un CD('testCD/LeFich.txt')");
 
-        CD cd2 = new CD("LeFich.txt");
+        CD cd2 = new CD("testCD/LeFich.txt");
 
         System.out.println("Appel de la fonction getUnePlage(3)");
         System.out.println("La plage doit être : 'Orelsan - Basique - 164.0 sec'");
@@ -288,10 +288,10 @@ public class CDT {
         System.out.println("");
 
         System.out.println("Cas d'erreur : getUnePlage(index > lesPlages.size())");
-        System.out.println("Création d'un CD('LeFichEmpty.txt')");
+        System.out.println("Création d'un CD('testCD/LeFichEmpty.txt')");
         System.out.println("Ce test doit retourner 'Le fichier fournit est incorrect, Auteur et titre manquant' -->");
 
-        CD cd3 = new CD("LeFichEmpty.txt");
+        CD cd3 = new CD("testCD/LeFichEmpty.txt");
 
         System.out.println("Appel de la fonction getUnePlage(1)");
         System.out.println("Ce test doit retourner 'La plage n'existe pas' -->");

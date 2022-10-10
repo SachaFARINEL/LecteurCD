@@ -69,8 +69,8 @@ public class CD {
      */
     public int getNbrePlages() {
         int nbPlages = 0;
-        if (!lesPlages.isEmpty()) {
-            nbPlages = lesPlages.size();
+        if (!this.lesPlages.isEmpty()) {
+            nbPlages = this.lesPlages.size();
         } else {
             System.out.println("CD incorrect");
         }

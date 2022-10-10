@@ -3,8 +3,8 @@ package datas;
 public class PlageT {
 
     public static void main(String[] args) {
-        testConstructeur();
-        testGetFicheComplete();
+//        testConstructeur();
+//        testGetFicheComplete();
         testToString();
     }
 
@@ -75,7 +75,6 @@ public class PlageT {
         System.out.println("Ce test doit retourner 'Plage incorrecte' -->");
 
         Plage plage3 = new Plage(duree3, "", "Auteur");
-
     }
 
     private static void testGetFicheComplete() {
@@ -143,7 +142,6 @@ public class PlageT {
         System.out.println("Ce test doit retourner 'Plage incorrecte' -->");
 
         plage3.getFicheComplete();
-
     }
 
     private static void testToString() {
@@ -177,7 +175,7 @@ public class PlageT {
 
         System.out.println("Cas d'erreur : Duree < 0 et String nulles");
         System.out.println("Initialisation d'une Duree à -20000millisecondes");
-        System.out.println("Ce test doit retourner 'Plage incorrecte' -->");
+        System.out.println("Ce test doit retourner 'Temps incorrecte' -->");
 
         Duree duree2 = new Duree(-20000);
 
@@ -190,7 +188,5 @@ public class PlageT {
         System.out.println("Ce test doit retourner 'Plage incorrecte' -->");
 
         System.out.println(plage2.toString());
-
-
     }
 }

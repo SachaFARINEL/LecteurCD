@@ -199,7 +199,6 @@ public class FrameLecteurCD extends JFrame {
 
     public void setImgPochetteCD(String pathPochette) {
         if (this.getLecteurCD().estCharge()) {
-            System.out.println(pathPochette);
             ImageIcon pochetteCD = new ImageIcon("ws/ressources/" + pathPochette);
             ImageIcon imgPochetteCDResize = new ImageIcon(pochetteCD.getImage().getScaledInstance(400, 400, Image.SCALE_DEFAULT));
             this.labPochetteCD.setIcon(imgPochetteCDResize);

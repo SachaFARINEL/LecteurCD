@@ -3,10 +3,10 @@ package datas;
 public class CDT {
 
     public static void main(String[] args) {
-        //testConstructeur1();
-        //testConstructeur2();
+//        testConstructeur1();
+//        testConstructeur2();
         //testGetNbrePlages();
-        //testGetDureeTotale();
+        testGetDureeTotale();
         //testGetUnePlage();
     }
 
@@ -179,7 +179,6 @@ public class CDT {
         dureeTotale += new Duree(0, 1, 34).getLeTemps();
         dureeTotale += new Duree(0, 4, 12).getLeTemps();
         dureeTotale += new Duree(0, 5, 54).getLeTemps();
-        System.out.println("Ce test doit retourner 'Temps incorrect' -->");
 
         if (cd1.getDureeTotale().getLeTemps() == dureeTotale) {
             System.out.println("--> Test OK");
@@ -206,7 +205,6 @@ public class CDT {
         tempsTotal += new Duree(1, 10, 15).getLeTemps();
 
         System.out.println("Appel de la fonction getDureeTotale() : Temps du fichier -> " + tempsTotal);
-        System.out.println("Ce test doit retourner 'Temps incorrect' -->");
 
         if (cd2.getDureeTotale().getLeTemps() == tempsTotal) {
             System.out.println("--> Test OK");
@@ -225,7 +223,7 @@ public class CDT {
         CD cd3 = new CD("Didine mix", "");
 
         System.out.println("Appel de la fonction getDureeTotale() sur CD");
-        System.out.println("Ce test doit retourner 'Temps incorrect & CD incorrect' -->");
+        System.out.println("Ce test doit retourner 'CD incorrect' -->");
 
         cd3.getDureeTotale();
 
@@ -240,7 +238,7 @@ public class CDT {
         CD cd4 = new CD("LeFichEmpty.txt");
 
         System.out.println("Appel de la fonction getNbrePlages() sur CD");
-        System.out.println("Ce test doit retourner 'Temps incorrect & CD incorrect' -->");
+        System.out.println("Ce test doit retourner 'CD incorrect' -->");
 
         cd4.getDureeTotale();
 

@@ -16,7 +16,7 @@ public class Duree {
      * @param millisecondes la durée exprimée en millisecondes
      */
     public Duree(long millisecondes) {
-        if (millisecondes > 0) {
+        if (millisecondes >= 0) {
             this.leTemps = millisecondes;
         } else {
             System.out.println("Temps incorrect");

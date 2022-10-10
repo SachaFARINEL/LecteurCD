@@ -3,13 +3,13 @@ package datas;
 public class DureeT {
 
     public static void main(String[] args) {
-        testConstruct1();
-        testConstruct2();
-        testConstruct3();
-        testAjoute();
-        testCompareA();
-        testEnTexte();
-        testGetLeTemps();
+//        testConstruct1();
+//        testConstruct2();
+//        testConstruct3();
+//        testAjoute();
+//        testCompareA();
+//        testEnTexte();
+//        testGetLeTemps();
     }
 
     private static void testConstruct1() {
@@ -43,12 +43,14 @@ public class DureeT {
         System.out.println("--------------------------------------");
         System.out.println("");
 
-        System.out.println("Cas limite :  Millisecondes = 0");
+        System.out.println("Cas limite :  Millisecondes = 0 (Besoin pour getDureeTotale()");
         System.out.println("Initialisation d'une Durée à 0millisecondes");
-        System.out.println("Ce test doit retourner 'Temps incorrect' -->");
-
         Duree duree3 = new Duree(0);
-
+        if (duree3.getLeTemps() == 0) {
+            System.out.println("--> Test OK");
+        } else {
+            System.out.println("--> Echec du test !");
+        }
     }
 
     private static void testConstruct2() {
@@ -211,7 +213,6 @@ public class DureeT {
 
         System.out.println("Cas limite 1 :  Millisecondes = 0");
         System.out.println("Initialisation d'une Durée à 0millisecondes");
-        System.out.println("Ce test doit retourner 'Temps incorrect' -->");
 
         Duree duree10 = new Duree(0);
 
@@ -379,8 +380,6 @@ public class DureeT {
         System.out.println("Ce test doit retourner 'Temps incorrect' -->");
 
         duree11.ajoute(duree12);
-
-
     }
 
     private static void testCompareA() {
@@ -459,13 +458,13 @@ public class DureeT {
         Duree duree7 = new Duree(2);
 
         System.out.println("Initialisation d'une autre Durée à -2millisecondes");
+        System.out.println("Ce test doit retourner 'Temps incorrect' -->");
 
         Duree duree8 = new Duree(-2);
 
         System.out.println("Appel de la fonction compareA()");
         System.out.println("Ce test doit retourner 'Temps incorrect' -->");
         duree7.compareA(duree8);
-
     }
 
     private static void testEnTexte() {
@@ -553,7 +552,6 @@ public class DureeT {
         System.out.println("Ce test doit retourner 'Paramètre incorrect' -->");
 
         duree2.enTexte('X');
-
     }
 
     private static void testGetLeTemps() {

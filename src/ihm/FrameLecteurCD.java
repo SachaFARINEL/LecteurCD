@@ -43,6 +43,7 @@ public class FrameLecteurCD extends JFrame {
     private void miseEnPlace() throws IOException {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setSize(600, 800);
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setIconImage(ImageIO.read(new File("ws/ressources/cd.png")));
         this.setLayout(new GridLayout(2, 1));

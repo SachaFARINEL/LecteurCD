@@ -34,6 +34,8 @@ public class MyMouseListener implements ActionListener {
 
                 resetPlageInformations();
 
+                this.frameLecteurCD.setImgPochetteCD(null);
+
             }
         }
 

@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class FrameLecteurCD extends JFrame {
 
-    private JButton btnChargerCD = new JButton("Charger le CD - OFF");
+    private JButton btnChargerCD = new JButton("Charger le CD");
     private JButton btnStop = new JButton(new ImageIcon("ressources/stop.png"));
     private JButton btnPlay = new JButton(new ImageIcon("ressources/play.png"));
     private JButton btnNext = new JButton(new ImageIcon("ressources/next.png"));
@@ -24,11 +24,12 @@ public class FrameLecteurCD extends JFrame {
     private JTextField txtPlageCourante = new JTextField("");
     private JTextField txtInfoPlageCourante = new JTextField("");
     private JTextField txtDureePlageCourante = new JTextField("");
+    private JTextField txtEtatLecteur = new JTextField("");
+
 
     private JLabel labTempsTotal = new JLabel("Temps total");
     private JLabel labNbPlages = new JLabel("Nombre de plages");
     private JLabel labPochetteCD;
-
     private ImageIcon imgPochetteCD;
 
     private LecteurCD lecteurCD;
@@ -85,8 +86,14 @@ public class FrameLecteurCD extends JFrame {
 
     private JPanel chargementCD() {
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(1, 1));
+        panel.setLayout(new GridLayout(1, 2, 30, 30));
+        panel.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 20));
         panel.add(this.btnChargerCD);
+        this.txtEtatLecteur.setText("OFF");
+        this.txtEtatLecteur.setBackground(Color.red);
+        this.txtEtatLecteur.setEditable(false);
+        this.txtEtatLecteur.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.add(this.txtEtatLecteur);
 
         return panel;
     }
@@ -172,9 +179,9 @@ public class FrameLecteurCD extends JFrame {
 
     public void setBtnChargerCD() {
         if (this.lecteurCD.estCharge()) {
-            this.btnChargerCD.setText("Retirer le CD - ON");
+            this.btnChargerCD.setText("Retirer le CD");
         } else {
-            this.btnChargerCD.setText("Charger le CD - OFF");
+            this.btnChargerCD.setText("Charger le CD");
         }
     }
 
@@ -196,6 +203,17 @@ public class FrameLecteurCD extends JFrame {
 
     public void setTxtDureePlageCourante(String dureePlageCourante) {
         this.txtDureePlageCourante.setText(dureePlageCourante);
+    }
+
+    public void setTxtEtatLecteur() {
+        if (this.lecteurCD.estCharge()) {
+            this.txtEtatLecteur.setText("ON");
+            this.txtEtatLecteur.setBackground(Color.green);
+
+        } else {
+            this.txtEtatLecteur.setText("OFF");
+            this.txtEtatLecteur.setBackground(Color.red);
+        }
     }
 
     public void setImgPochetteCD(String pathPochette) {

@@ -9,6 +9,8 @@ package datas;
  *     <li>Le passage au morceau suivant (touche NEXT)</li>
  *     <li>Le passage au morceau précédent (touche PREVIOUS)</li>
  * </ul>
+ *
+ * @author FARINEL Sacha
  */
 public class LecteurCD {
 
@@ -23,7 +25,7 @@ public class LecteurCD {
     private CD leCdCourant;
 
     /**
-     * L'index de la plage courante (1 <= index <= nbrePlages ou zéro si aucun CD chargé)
+     * L'index de la plage courante (1 &lt;= index &lt;= nbrePlages ou zéro si aucun CD chargé)
      */
     private int indexPlage;
 

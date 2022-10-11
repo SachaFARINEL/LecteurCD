@@ -1,7 +1,12 @@
 package datas;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Cette classe définit une durée temporelle. Elle permet la manipulation d'intervalles de temps. Une durée s'exprime en millisecondes.
+ *
+ * @author FARINEL Sacha
  */
 public class Duree {
 
@@ -100,10 +105,10 @@ public class Duree {
      * La durée courante (leTemps) est analysée pour fabriquer un tableau d'entiers (taille 5) dont chaque élément à la signification suivante :
      * <ul>
      *     <li>ret[0] contient le nbre de jours.</li>
-     *     <li>ret[1] contient le nbre d'heures (<24h).</li>
-     *     <li>ret[2] contient le nbre de minutes (<60min).</li>
-     *     <li>ret[3] contient le nbre de secondes (<60sec).</li>
-     *     <li>ret[4] contient le nbre de millisecondes (<1000millisec).</li>
+     *     <li>ret[1] contient le nbre d'heures (&lt; 24h).</li>
+     *     <li>ret[2] contient le nbre de minutes (&lt; 60min).</li>
+     *     <li>ret[3] contient le nbre de secondes (&lt; 60sec).</li>
+     *     <li>ret[4] contient le nbre de millisecondes (&lt; 1000millisec).</li>
      * </ul>
      *
      * @return un tableau d'entiers.
@@ -145,7 +150,7 @@ public class Duree {
      * La méthode utilise la méthode privée enJHMS() pour extraire dans un tableau d'entiers séparement le nombre de jours,
      * le nombre d'heures, le nombre de minutes, le nombre de secondes et le nombre de millisecondes qui contient la durée courante (leTemps).
      */
-    public java.lang.String enTexte(char mode) {
+    public String enTexte(char mode) {
         String duree = "";
         int[] temps = enJHMS();
         if (temps != null) {
@@ -157,10 +162,23 @@ public class Duree {
             int secondeTotal = (jour * 24 * 60 * 60) + (heure * 60 * 60) + (minute * 60) + seconde;
             int milliseconde = temps[4];
             int millisecondeTotal = (jour * 24 * 60 * 60 * 1000) + (heure * 60 * 60 * 1000) + (minute * 60 * 1000) + (seconde * 1000) + milliseconde;
+            String formatHeure = "";
+            if (heureTotal < 10) {
+                formatHeure = "0";
+            }
+            String formatMinute = "";
+            if (minute < 10) {
+                formatMinute = "0";
+            }
+            String formatSeconde = "";
+            if (seconde < 10) {
+                formatSeconde = "0";
+            }
 
             switch (mode) {
                 case 'J' -> duree = jour + " jours " + heure + " h";
-                case 'H' -> duree = heureTotal + ":" + minute + ":" + seconde;
+                case 'H' ->
+                        duree = formatHeure + heureTotal + ":" + formatMinute + minute + ":" + formatSeconde + seconde;
                 case 'S' -> duree = secondeTotal + "." + milliseconde + " sec";
                 case 'M' -> duree = millisecondeTotal + " millisec";
                 default -> System.out.println("Paramètre incorrect");

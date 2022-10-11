@@ -1,7 +1,6 @@
 package datas;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,6 +8,8 @@ import java.util.ArrayList;
 /**
  * Un CD est un ensemble de plages musicales. Le CD est caractérisé par un titre, un interprète (ou des interprètes s'il s'agit d'un groupe).
  * Lors de sa création, le CD est vierge. En le gravant, il sera rempli progressivement de morceaux (plages).
+ *
+ * @author FARINEL Sacha
  */
 public class CD {
     /**

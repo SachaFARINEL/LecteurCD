@@ -3,6 +3,8 @@ package datas;
 /**
  * Cette classe définit une plage de musique appartenant à un CD. Une plage a une durée et peut se jouer.
  * Elle est caractérisée par un titre (titre du morceau) et un(des) interprète(s)(chanteurs, musiciens, ...) du morceau de musique
+ *
+ * @author FARINEL Sacha
  */
 public class Plage {
     /**

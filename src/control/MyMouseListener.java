@@ -32,6 +32,7 @@ public class MyMouseListener implements ActionListener {
                 String titreCD = this.frameLecteurCD.getLecteurCD().getCD().getLeTitreCD();
                 String interpreteCD = this.frameLecteurCD.getLecteurCD().getCD().getlInterpreteCD();
                 this.frameLecteurCD.setImgPochetteCD(titreCD + "_" + interpreteCD + ".jpg");
+                this.frameLecteurCD.setTxtEtatLecteur();
             } else {
                 this.frameLecteurCD.getLecteurCD().setDecharger();
                 this.frameLecteurCD.setBtnChargerCD();
@@ -39,6 +40,8 @@ public class MyMouseListener implements ActionListener {
                 this.frameLecteurCD.setTxtTempsTotal(null);
                 resetPlageInformations();
                 this.frameLecteurCD.setImgPochetteCD(null);
+                this.frameLecteurCD.setTxtEtatLecteur();
+
             }
         }
 

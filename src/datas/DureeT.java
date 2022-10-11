@@ -8,7 +8,7 @@ public class DureeT {
 //        testConstruct3();
 //        testAjoute();
 //        testCompareA();
-//        testEnTexte();
+        testEnTexte();
 //        testGetLeTemps();
     }
 

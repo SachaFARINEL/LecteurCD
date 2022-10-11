@@ -5,8 +5,6 @@ import datas.LecteurCD;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -36,10 +34,10 @@ public class FrameLecteurCD extends JFrame {
     public FrameLecteurCD(String titre) throws IOException {
         super(titre);
         this.lecteurCD = new LecteurCD();
-        miseEnPlace();
+        miseEnPlaceDuDecor();
     }
 
-    private void miseEnPlace() throws IOException {
+    private void miseEnPlaceDuDecor() throws IOException {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setSize(600, 800);
         this.setResizable(false);
@@ -211,7 +209,6 @@ public class FrameLecteurCD extends JFrame {
     }
 
     public static void main(String[] args) throws UnsupportedLookAndFeelException, IOException {
-        UIManager.setLookAndFeel(new NimbusLookAndFeel());
         FrameLecteurCD frameLecteurCD = new FrameLecteurCD("Mon lecteur CD");
         frameLecteurCD.setVisible(true);
     }

@@ -162,6 +162,7 @@ public class Duree {
             int secondeTotal = (jour * 24 * 60 * 60) + (heure * 60 * 60) + (minute * 60) + seconde;
             int milliseconde = temps[4];
             int millisecondeTotal = (jour * 24 * 60 * 60 * 1000) + (heure * 60 * 60 * 1000) + (minute * 60 * 1000) + (seconde * 1000) + milliseconde;
+
             String formatHeure = "";
             if (heureTotal < 10) {
                 formatHeure = "0";

@@ -1,6 +1,8 @@
 Orelsan / La fete est finie
+Test / Orel / 5
+Test 2 / Orel / 10
 San / Orelsan / 4 / 02
-La fête est finie / Orelsan / 3 / 04
+La fete est finie / Orelsan / 3 / 04
 Basique / Orelsan / 2 / 44
 Tout va bien / Orelsan / 2 / 29
 Defaite de famille / Orelsan / 3 / 43

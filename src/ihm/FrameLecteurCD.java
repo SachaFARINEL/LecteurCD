@@ -5,6 +5,7 @@ import datas.LecteurCD;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -22,10 +23,13 @@ public class FrameLecteurCD extends JFrame {
     private JTextField txtPlageCourante = new JTextField("");
     private JTextField txtInfoPlageCourante = new JTextField("");
     private JTextField txtDureePlageCourante = new JTextField("");
+    private JTextField txtChronometre = new JTextField("");
 
     private JLabel labTempsTotal = new JLabel("Temps total");
     private JLabel labNbPlages = new JLabel("Nombre de plages");
     private JLabel labPochetteCD;
+
+
     private ImageIcon imgPochetteCD;
 
     private LecteurCD lecteurCD;
@@ -38,7 +42,7 @@ public class FrameLecteurCD extends JFrame {
     }
 
     private void miseEnPlaceDuDecor() throws IOException {
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 800);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -82,9 +86,12 @@ public class FrameLecteurCD extends JFrame {
 
     private JPanel chargementCD() {
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(1, 1, 50, 50));
+        panel.setLayout(new GridLayout(1, 2, 50, 50));
         panel.setBorder(BorderFactory.createEmptyBorder(0, 40, 0, 40));
         panel.add(this.btnChargerCD);
+        this.txtChronometre.setEditable(false);
+        this.txtChronometre.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.add(this.txtChronometre);
         return panel;
     }
 
@@ -195,7 +202,6 @@ public class FrameLecteurCD extends JFrame {
         this.txtDureePlageCourante.setText(dureePlageCourante);
     }
 
-
     public void setImgPochetteCD(String pathPochette) {
         if (this.getLecteurCD().estCharge()) {
             ImageIcon pochetteCD = new ImageIcon("ressources/" + pathPochette);
@@ -208,7 +214,12 @@ public class FrameLecteurCD extends JFrame {
         }
     }
 
+    public void setChronometre(String tempsRestant) {
+        this.txtChronometre.setText(tempsRestant);
+    }
+
     public static void main(String[] args) throws UnsupportedLookAndFeelException, IOException {
+        UIManager.setLookAndFeel(new NimbusLookAndFeel());
         FrameLecteurCD frameLecteurCD = new FrameLecteurCD("Mon lecteur CD");
         frameLecteurCD.setVisible(true);
     }

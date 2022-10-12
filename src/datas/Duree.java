@@ -1,8 +1,5 @@
 package datas;
 
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-
 /**
  * Cette classe définit une durée temporelle. Elle permet la manipulation d'intervalles de temps. Une durée s'exprime en millisecondes.
  *
@@ -158,6 +155,7 @@ public class Duree {
             int heure = temps[1];
             int heureTotal = (jour * 24) + heure;
             int minute = temps[2];
+            int minuteTotal = (jour * 24 * 60) + (heure * 60) + minute;
             int seconde = temps[3];
             int secondeTotal = (jour * 24 * 60 * 60) + (heure * 60 * 60) + (minute * 60) + seconde;
             int milliseconde = temps[4];
@@ -178,10 +176,10 @@ public class Duree {
 
             switch (mode) {
                 case 'J' -> duree = jour + " jours " + heure + " h";
-                case 'H' ->
-                        duree = formatHeure + heureTotal + ":" + formatMinute + minute + ":" + formatSeconde + seconde;
+                case 'H' -> duree = formatHeure + heureTotal + ":" + formatMinute + minute + ":" + formatSeconde + seconde;
                 case 'S' -> duree = secondeTotal + "." + milliseconde + " sec";
                 case 'M' -> duree = millisecondeTotal + " millisec";
+                case 'C' -> duree = formatMinute + minuteTotal + ":" + formatSeconde + seconde;
                 default -> System.out.println("Paramètre incorrect");
             }
 

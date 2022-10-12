@@ -1,11 +1,14 @@
 package control;
 
+import datas.Duree;
 import ihm.FrameLecteurCD;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MyMouseListener implements ActionListener {
 
@@ -26,7 +29,6 @@ public class MyMouseListener implements ActionListener {
                     this.frameLecteurCD.getLecteurCD().chargerUnCD(nomFichierAudio);
                 }
                 this.frameLecteurCD.setBtnChargerCD();
-
                 this.frameLecteurCD.setTxtNbPlages(String.valueOf(this.frameLecteurCD.getLecteurCD().getNombrePlages()));
                 this.frameLecteurCD.setTxtTempsTotal(this.frameLecteurCD.getLecteurCD().getTempsTotal());
                 String titreCD = this.frameLecteurCD.getLecteurCD().getCD().getLeTitreCD();
@@ -42,35 +44,30 @@ public class MyMouseListener implements ActionListener {
 
             }
         }
+        if (this.frameLecteurCD.getLecteurCD().estCharge() && this.frameLecteurCD.getLecteurCD().getCD() != null) {
 
-        if (event.getSource() == frameLecteurCD.getBtnPlay()) {
-            if (this.frameLecteurCD.getLecteurCD().estCharge() && this.frameLecteurCD.getLecteurCD().getCD() != null) {
+            if (event.getSource() == frameLecteurCD.getBtnPlay()) {
                 this.frameLecteurCD.getLecteurCD().play();
                 setPlageInformations();
+                manageChronometre();
             }
-        }
 
-        if (event.getSource() == frameLecteurCD.getBtnStop()) {
-            if (this.frameLecteurCD.getLecteurCD().estCharge() && this.frameLecteurCD.getLecteurCD().getCD() != null) {
+            if (event.getSource() == frameLecteurCD.getBtnStop()) {
                 this.frameLecteurCD.getLecteurCD().stop();
-
                 resetPlageInformations();
             }
-        }
 
-        if (event.getSource() == frameLecteurCD.getBtnNext()) {
-            if (this.frameLecteurCD.getLecteurCD().estCharge() && this.frameLecteurCD.getLecteurCD().getCD() != null) {
+            if (event.getSource() == frameLecteurCD.getBtnNext()) {
                 this.frameLecteurCD.getLecteurCD().next();
                 setPlageInformations();
             }
-        }
 
-        if (event.getSource() == frameLecteurCD.getBtnPrevious()) {
-            if (this.frameLecteurCD.getLecteurCD().estCharge() && this.frameLecteurCD.getLecteurCD().getCD() != null) {
+            if (event.getSource() == frameLecteurCD.getBtnPrevious()) {
                 this.frameLecteurCD.getLecteurCD().previous();
                 setPlageInformations();
             }
         }
+
     }
 
     private void setPlageInformations() {
@@ -85,5 +82,33 @@ public class MyMouseListener implements ActionListener {
         this.frameLecteurCD.setTxtInfoPlageCourante(null);
         this.frameLecteurCD.setTxtDureePlageCourante(null);
     }
+
+    private void manageChronometre() {
+        int indexPlage = frameLecteurCD.getLecteurCD().getIndexCourant();
+        if (indexPlage > 0) {
+            Timer chrono = new Timer();
+            chrono.schedule(new TimerTask() {
+                long time = 1;
+
+                @Override
+                public void run() {
+                    Duree duree = new Duree(time);
+
+                    frameLecteurCD.setChronometre(duree.enTexte('C') + " / " + frameLecteurCD.getLecteurCD().getCD().getUnePlage(indexPlage).getLaDuree().enTexte('C'));
+                    if (time >= frameLecteurCD.getLecteurCD().getCD().getUnePlage(indexPlage).getLaDuree().getLeTemps()) {
+                        cancel();
+                        frameLecteurCD.setChronometre(null);
+                        frameLecteurCD.getLecteurCD().next();
+                        setPlageInformations();
+                        manageChronometre();
+                    }
+
+                    time += 1000;
+                }
+            }, 1000, 1000);
+
+        }
+    }
+
 }
 

@@ -112,7 +112,7 @@ public class Duree {
      */
     private int[] enJHMS() {
         int[] ret = null;
-        if (this.leTemps > 0) {
+        if (this.leTemps >= 0) {
             ret = new int[5];
             int jour = (int) (this.leTemps / 86400000);
             int reste = (int) (this.leTemps % 86400000);

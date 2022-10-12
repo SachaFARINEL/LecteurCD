@@ -88,7 +88,7 @@ public class MyMouseListener implements ActionListener {
         if (indexPlage > 0) {
             Timer chrono = new Timer();
             chrono.schedule(new TimerTask() {
-                long time = 1;
+                long time = 0;
 
                 @Override
                 public void run() {
@@ -108,6 +108,15 @@ public class MyMouseListener implements ActionListener {
             }, 1000, 1000);
 
         }
+    }
+
+    private void manageChrono() {
+        javax.swing.Timer timer = new javax.swing.Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                long time = 0;
+            }
+        });
     }
 
 }

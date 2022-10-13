@@ -12,33 +12,36 @@ import java.io.IOException;
 
 public class FrameLecteurCD extends JFrame {
 
-    private JButton btnChargerCD = new JButton("Charger le CD - OFF");
-    private JButton btnStop = new JButton(new ImageIcon("ressources/stop.png"));
-    private JButton btnPlay = new JButton(new ImageIcon("ressources/play.png"));
-    private JButton btnNext = new JButton(new ImageIcon("ressources/next.png"));
-    private JButton btnPrevious = new JButton(new ImageIcon("ressources/previous.png"));
+    private final JButton btnChargerCD = new JButton("Charger le CD - OFF");
+    private final JButton btnStop = new JButton(new ImageIcon("ressources/stop.png"));
+    private final JButton btnPlay = new JButton(new ImageIcon("ressources/play.png"));
+    private final JButton btnNext = new JButton(new ImageIcon("ressources/next.png"));
+    private final JButton btnPrevious = new JButton(new ImageIcon("ressources/previous.png"));
+    private final JButton btnPause = new JButton(new ImageIcon("ressources/pause.png"));
 
-    private JTextField txtTempsTotal = new JTextField("");
-    private JTextField txtNbPlages = new JTextField("");
-    private JTextField txtPlageCourante = new JTextField("");
-    private JTextField txtInfoPlageCourante = new JTextField("");
-    private JTextField txtDureePlageCourante = new JTextField("");
-    private JTextField txtChronometre = new JTextField("");
+    private final JTextField txtTempsTotal = new JTextField("");
+    private final JTextField txtNbPlages = new JTextField("");
+    private final JTextField txtPlageCourante = new JTextField("");
+    private final JTextField txtInfoPlageCourante = new JTextField("");
+    private final JTextField txtDureePlageCourante = new JTextField("");
+    private final JTextField txtChronometre = new JTextField("");
+    private final JTextField txtAlbum = new JTextField("");
 
-    private JLabel labTempsTotal = new JLabel("Temps total");
-    private JLabel labNbPlages = new JLabel("Nombre de plages");
+    private final JLabel labTempsTotal = new JLabel("Temps total");
+    private final JLabel labNbPlages = new JLabel("Nombre de plages");
     private JLabel labPochetteCD;
 
 
     private ImageIcon imgPochetteCD;
-
     private LecteurCD lecteurCD;
+    private javax.swing.Timer chrono;
 
 
     public FrameLecteurCD(String titre) throws IOException {
         super(titre);
         this.lecteurCD = new LecteurCD();
         miseEnPlaceDuDecor();
+        addListeners();
     }
 
     private void miseEnPlaceDuDecor() throws IOException {
@@ -50,15 +53,17 @@ public class FrameLecteurCD extends JFrame {
         this.setLayout(new GridLayout(2, 1));
         this.add(pochetteView());
         this.add(controlsView());
-        addListeners();
     }
 
     private void addListeners() {
-        this.btnChargerCD.addActionListener(new MyMouseListener(this));
-        this.btnPlay.addActionListener(new MyMouseListener(this));
-        this.btnStop.addActionListener(new MyMouseListener(this));
-        this.btnNext.addActionListener(new MyMouseListener(this));
-        this.btnPrevious.addActionListener(new MyMouseListener(this));
+        MyMouseListener myMouseListener = new MyMouseListener(this);
+        this.btnChargerCD.addActionListener(myMouseListener);
+        this.btnPlay.addActionListener(myMouseListener);
+        this.btnStop.addActionListener(myMouseListener);
+        this.btnPause.addActionListener(myMouseListener);
+        this.btnNext.addActionListener(myMouseListener);
+        this.btnPrevious.addActionListener(myMouseListener);
+        this.chrono = new Timer(1000, myMouseListener);
     }
 
     private JPanel controlsView() {
@@ -80,18 +85,36 @@ public class FrameLecteurCD extends JFrame {
         ImageIcon imgPochetteCDResize = new ImageIcon(this.imgPochetteCD.getImage().getScaledInstance(600, 400, Image.SCALE_DEFAULT));
         this.labPochetteCD = new JLabel(imgPochetteCDResize);
         panel.add(this.labPochetteCD);
-        //todo  Minuteur
         return panel;
     }
 
     private JPanel chargementCD() {
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(1, 2, 50, 50));
+        panel.setLayout(new GridLayout(2, 1, 10, 0));
         panel.setBorder(BorderFactory.createEmptyBorder(0, 40, 0, 40));
-        panel.add(this.btnChargerCD);
+        panel.add(chronometre());
+        panel.add(chargerAlbum());
+
+        return panel;
+    }
+
+    private JPanel chronometre() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(1, 1));
+        panel.setBorder(BorderFactory.createEmptyBorder(0, 100, 0, 100));
         this.txtChronometre.setEditable(false);
         this.txtChronometre.setHorizontalAlignment(SwingConstants.CENTER);
         panel.add(this.txtChronometre);
+        return panel;
+    }
+
+    private JPanel chargerAlbum() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(1, 2));
+        panel.add(this.btnChargerCD);
+        this.txtAlbum.setEditable(false);
+        this.txtAlbum.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.add(this.txtAlbum);
         return panel;
     }
 
@@ -99,7 +122,6 @@ public class FrameLecteurCD extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(2, 2));
         panel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
-
 
         this.labTempsTotal.setHorizontalAlignment(SwingConstants.CENTER);
         panel.add(this.labTempsTotal);
@@ -140,13 +162,13 @@ public class FrameLecteurCD extends JFrame {
 
     private JPanel menulecteur() {
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(1, 4, 30, 30));
+        panel.setLayout(new GridLayout(1, 5, 30, 30));
         panel.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 20));
         panel.add(this.btnStop);
         panel.add(this.btnPlay);
+        panel.add(this.btnPause);
         panel.add(this.btnNext);
         panel.add(this.btnPrevious);
-
         return panel;
     }
 
@@ -166,12 +188,20 @@ public class FrameLecteurCD extends JFrame {
         return this.btnPlay;
     }
 
+    public JButton getBtnPause() {
+        return this.btnPause;
+    }
+
     public JButton getBtnNext() {
         return this.btnNext;
     }
 
     public JButton getBtnPrevious() {
         return this.btnPrevious;
+    }
+
+    public Timer getChrono() {
+        return this.chrono;
     }
 
     public void setBtnChargerCD() {
@@ -203,19 +233,25 @@ public class FrameLecteurCD extends JFrame {
     }
 
     public void setImgPochetteCD(String pathPochette) {
+        int width = 400;
+
         if (this.getLecteurCD().estCharge()) {
-            ImageIcon pochetteCD = new ImageIcon("ressources/" + pathPochette);
-            ImageIcon imgPochetteCDResize = new ImageIcon(pochetteCD.getImage().getScaledInstance(400, 400, Image.SCALE_DEFAULT));
-            this.labPochetteCD.setIcon(imgPochetteCDResize);
+            this.imgPochetteCD = new ImageIcon("ressources/" + pathPochette);
         } else {
             this.imgPochetteCD = new ImageIcon("ressources/loading.jpg");
-            ImageIcon icon = new ImageIcon(this.imgPochetteCD.getImage().getScaledInstance(600, 400, Image.SCALE_DEFAULT));
-            this.labPochetteCD.setIcon(icon);
+            width = 600;
         }
+
+        ImageIcon imgPochetteCDResize = new ImageIcon(this.imgPochetteCD.getImage().getScaledInstance(width, 400, Image.SCALE_DEFAULT));
+        this.labPochetteCD.setIcon(imgPochetteCDResize);
     }
 
-    public void setChronometre(String tempsRestant) {
+    public void setTxtChronometre(String tempsRestant) {
         this.txtChronometre.setText(tempsRestant);
+    }
+
+    public void setTxtAlbum(String informationsAlbum) {
+        this.txtAlbum.setText(informationsAlbum);
     }
 
     public static void main(String[] args) throws UnsupportedLookAndFeelException, IOException {

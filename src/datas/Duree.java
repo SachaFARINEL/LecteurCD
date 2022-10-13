@@ -176,7 +176,8 @@ public class Duree {
 
             switch (mode) {
                 case 'J' -> duree = jour + " jours " + heure + " h";
-                case 'H' -> duree = formatHeure + heureTotal + ":" + formatMinute + minute + ":" + formatSeconde + seconde;
+                case 'H' ->
+                        duree = formatHeure + heureTotal + ":" + formatMinute + minute + ":" + formatSeconde + seconde;
                 case 'S' -> duree = secondeTotal + "." + milliseconde + " sec";
                 case 'M' -> duree = millisecondeTotal + " millisec";
                 case 'C' -> duree = formatMinute + minuteTotal + ":" + formatSeconde + seconde;
@@ -197,6 +198,10 @@ public class Duree {
      */
     public long getLeTemps() {
         return this.leTemps;
+    }
+
+    public void setLeTemps(long duree) {
+        this.leTemps = duree;
     }
 
 }

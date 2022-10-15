@@ -1,4 +1,4 @@
-
+ATTENTION : Le lancement de l'application est soumis au fait d'avoir le $CLASSPATH suivant : ../class
 Pour lancer le projet, il faut effectuer les lignes de commandes suivantes :
     Pour la compilation :
         - javac -d ../class ../src/ihm/FrameLecteurCD.java ../src/control/MyMouseListener.java ../src/datas/*.java
